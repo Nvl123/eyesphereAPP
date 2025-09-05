@@ -237,8 +237,17 @@ object LanguageConsistencyHelper {
                                   TranslationHelper.isTranslationAvailable() &&
                                   systemLanguage != "id"
             
+            // Fix: Server response should only be translated if EFFECTIVE language is not Indonesian
+            // This prevents translating when user explicitly chooses Indonesian
+            val effectiveLanguage = if (userLanguage != LanguageManager.DEFAULT_LANGUAGE) {
+                userLanguage
+            } else {
+                systemLanguage
+            }
+            
             val shouldTranslateServer = TranslationHelper.isTranslationAvailable() &&
-                                      systemLanguage != "id"
+                                      effectiveLanguage != "id" &&
+                                      effectiveLanguage != LanguageManager.LANGUAGE_INDONESIA
             
             // Update cache
             cachedUserLanguage = userLanguage
@@ -250,6 +259,7 @@ object LanguageConsistencyHelper {
             // Log cache update in background
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "Cache updated - User: $userLanguage, System: $systemLanguage")
+                Log.d(TAG, "Effective language: $effectiveLanguage")
                 Log.d(TAG, "Should translate UI: $shouldTranslateUI, Server: $shouldTranslateServer")
             }
             

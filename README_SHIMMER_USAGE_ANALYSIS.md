@@ -263,3 +263,4 @@ Shimmer effect di aplikasi EyeSphere Nav telah dioptimalkan dengan fokus pada:
 5. **User Experience**: Memberikan feedback visual yang jelas dan tidak mengganggu
 
 **Shimmer effect sekarang memberikan user experience yang optimal di DetailActivity!** 🎯✨
+

@@ -214,3 +214,4 @@ Untuk mengatasi masalah gambar mascot yang tertutup:
 ## Catatan Penting
 
 **Masalah utama adalah background FrameLayout** yang menutupi gambar mascot. Background `@drawable/processing_circle_bg` memiliki stroke yang mengganggu visibility gambar. Solusi paling sederhana adalah menghapus background tersebut.
+

@@ -191,3 +191,4 @@ Dengan perubahan ini, DetailActivity sekarang memiliki:
 ✅ **Fallback text yang informatif**  
 
 Saran rekomendasi sekarang akan selalu terlihat dan mendapatkan efek shimmer yang sama dengan elemen text lainnya, memberikan pengalaman pengguna yang lebih konsisten dan informatif! 🎯✨
+

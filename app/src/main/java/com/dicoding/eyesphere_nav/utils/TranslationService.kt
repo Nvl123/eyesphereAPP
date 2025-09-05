@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.generationConfig
+import com.dicoding.eyesphere_nav.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.Locale
@@ -12,7 +13,6 @@ class TranslationService private constructor() {
     
     companion object {
         private const val TAG = "TranslationService"
-        private const val GEMINI_API_KEY = "AIzaSyBav6iv6VFCtEBB57V4uFBdM2cyokje-gY"
         private const val MODEL_NAME = "gemini-2.0-flash"
         
         @Volatile
@@ -29,17 +29,22 @@ class TranslationService private constructor() {
     
     init {
         try {
-            generativeModel = GenerativeModel(
-                modelName = MODEL_NAME,
-                apiKey = GEMINI_API_KEY,
-                generationConfig = generationConfig {
-                    temperature = 0.1f
-                    topK = 1
-                    topP = 0.8f
-                    maxOutputTokens = 1024
-                }
-            )
-            Log.d(TAG, "Gemini model initialized successfully")
+            val apiKey = BuildConfig.GEMINI_API_KEY
+            if (apiKey.isNotEmpty()) {
+                generativeModel = GenerativeModel(
+                    modelName = MODEL_NAME,
+                    apiKey = apiKey,
+                    generationConfig = generationConfig {
+                        temperature = 0.1f
+                        topK = 1
+                        topP = 0.8f
+                        maxOutputTokens = 1024
+                    }
+                )
+                Log.d(TAG, "Gemini model initialized successfully")
+            } else {
+                Log.e(TAG, "Gemini API key is not configured in BuildConfig")
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to initialize Gemini model", e)
         }

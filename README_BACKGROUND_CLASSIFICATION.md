@@ -283,3 +283,4 @@ Log.d(TAG, "Item ${item.id} completed successfully: $classification ($confidence
 - Notification untuk monitoring
 
 **Jadi ya, user dapat keluar dari aplikasi dengan aman tanpa menghentikan proses klasifikasi yang sedang berjalan!** ✨📱
+

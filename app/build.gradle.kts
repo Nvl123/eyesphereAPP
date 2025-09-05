@@ -1,7 +1,17 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+}
+
+// Load local.properties
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(localPropertiesFile.inputStream())
+    }
 }
 
 android {
@@ -16,10 +26,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Add BuildConfig fields for API keys
+        val geminiApiKey = localProperties.getProperty("GEMINI_API_KEY") ?: ""
+        if (geminiApiKey.isNotEmpty()) {
+            buildConfigField("String", "GEMINI_API_KEY", "\"${geminiApiKey.trim()}\"")
+        } else {
+            buildConfigField("String", "GEMINI_API_KEY", "\"\"")
+        }
     }
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     
 
