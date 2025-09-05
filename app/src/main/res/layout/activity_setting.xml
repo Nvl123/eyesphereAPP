@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+                   android:background="?attr/android:colorBackground"
+        tools:context=".ui.settings.SettingActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/arrow_back_24px"
+            app:title="Settings"
+            app:titleCentered="true"
+            app:titleTextColor="?attr/colorOnSurface" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_bahasa"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?attr/cardBackgroundColor"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/img_bahasa"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/language_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bahasa"
+        app:layout_constraintStart_toStartOf="@id/btn_bahasa"
+        app:layout_constraintTop_toTopOf="@id/btn_bahasa"
+        app:tint="?attr/colorOnSurface"
+        android:elevation="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_bahasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bahasa"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bahasa"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/btn_bahasa"
+        android:elevation="10dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/chevron_right_24px"
+        app:layout_constraintEnd_toEndOf="@id/btn_bahasa"
+        app:layout_constraintTop_toTopOf="@id/btn_bahasa"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bahasa"
+        android:layout_marginEnd="15dp"
+        android:elevation="10dp"
+        app:tint="?attr/colorOnSurface" />
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_modeGL"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?attr/cardBackgroundColor"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_bahasa"/>
+
+
+    <ImageView
+        android:id="@+id/img_modeGL"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/lightbulb_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_modeGL"
+        app:layout_constraintStart_toStartOf="@id/btn_modeGL"
+        app:layout_constraintTop_toTopOf="@id/btn_modeGL"
+        app:tint="?attr/colorOnSurface"
+        android:elevation="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_modeGL_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on"
+        app:layout_constraintTop_toTopOf="@id/btn_modeGL"
+        app:layout_constraintBottom_toBottomOf="@id/btn_modeGL"
+        app:layout_constraintEnd_toEndOf="@id/btn_modeGL"
+        app:layout_goneMarginEnd="10dp"
+        android:textSize="17sp"
+        android:layout_marginEnd="14dp"
+        android:elevation="10dp"
+        android:textColor="?attr/colorOnSurface"/>
+
+    <TextView
+        android:id="@+id/tv_modeGL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mode_terang"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_modeGL"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/btn_modeGL"
+        android:elevation="10dp"/>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_faq"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?attr/cardBackgroundColor"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_modeGL"/>
+
+    <ImageView
+        android:id="@+id/img_faq"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/help_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_faq"
+        app:layout_constraintStart_toStartOf="@id/btn_faq"
+        app:layout_constraintTop_toTopOf="@id/btn_faq"
+        app:tint="?attr/colorOnSurface"
+        android:elevation="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_faq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/faq"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_faq"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/btn_faq"
+        android:elevation="10dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/chevron_right_24px"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="@id/btn_faq"
+        app:layout_constraintTop_toTopOf="@id/btn_faq"
+        app:layout_constraintBottom_toBottomOf="@id/btn_faq"
+        android:elevation="10dp"
+        app:tint="?attr/colorOnSurface"/>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_developer"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?attr/cardBackgroundColor"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_faq"/>
+
+    <ImageView
+        android:id="@+id/img_developer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_dev_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_developer"
+        app:layout_constraintStart_toStartOf="@id/btn_developer"
+        app:layout_constraintTop_toTopOf="@id/btn_developer"
+        app:tint="?attr/colorOnSurface"
+        android:elevation="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hubungi_pengembang"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_developer"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/btn_developer"
+        android:elevation="10dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/chevron_right_24px"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="@id/btn_developer"
+        app:layout_constraintTop_toTopOf="@id/btn_developer"
+        app:layout_constraintBottom_toBottomOf="@id/btn_developer"
+        android:elevation="10dp"
+        app:tint="?attr/colorOnSurface"/>
+
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        android:src="@drawable/bg_splash_new"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="76dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="382dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

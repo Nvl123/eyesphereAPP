@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The eyesphere</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_dashboard">ダッシュボード</string>
+    <string name="title_notifications">通知</string>
+
+    <string name="utama">メイン</string>
+    <string name="riwayat">履歴</string>
+    <string name="panduan">ガイド</string>
+    <string name="daya">40%</string>
+    <string name="daya_baterai">バッテリー残量</string>
+    <string name="status_koneksi">接続済み</string>
+    <string name="tanggal">2月5日</string>
+    <string name="tittle">白内障</string>
+    <string name="time">10:10:12</string>
+    <string name="settings">設定</string>
+    <string name="kecerahan">明度</string>
+    <string name="sedang">良好</string>
+    <string name="fokus">フォーカス</string>
+    <string name="bahasa">言語</string>
+    <string name="mode_terang">ライトモード</string>
+    <string name="mode_gelap">ダークモード</string>
+    <string name="on">オン</string>
+    <string name="faq">よくある質問</string>
+    <string name="hubungi_pengembang">開発者に連絡</string>
+    <string name="cara_penggunaan">使用方法</string>
+    <string name="panduan_penggunaan">使用ガイド</string>
+    <string name="artikel_terkait">関連記事</string>
+    <string name="buku_panduan">ユーザーマニュアル</string>
+
+    <!-- String resources untuk layout files -->
+    <string name="ambil_gambar">写真を撮る</string>
+    <string name="persen_0">0%</string>
+    <string name="tanggal_label">日付</string>
+    <string name="waktu_label">時間</string>
+    <string name="deskripsi_label">説明</string>
+    <string name="saran_penanganan_medis">🩺 医療処置の推奨事項</string>
+    <string name="powered_by_ai">📱 AIサーバー搭載</string>
+    <string name="disclaimer">⚠️ 免責事項</string>
+    <string name="disclaimer_text">この分析結果は参考用であり、専門的な医療診断の代わりにはなりません。正確な診断と適切な治療のためには、必ず眼科医にご相談ください。</string>
+    <string name="kategori_label">カテゴリ</string>
+    <string name="judul_artikel">記事タイトル</string>
+    <string name="deskripsi_artikel">この記事で取り上げられているトピックについて十分な詳細で説明する記事の説明。</string>
+
+    <!-- String resources untuk Kotlin files -->
+    <string name="memproses_gambar">%d枚の画像を処理中...</string>
+    <string name="classification_queue">分類キュー</string>
+    <string name="shows_progress">画像分類処理の進捗を表示</string>
+    <string name="eyesphere_classification">EyeSphere分類</string>
+    <string name="gambar_tidak_dapat_dimuat">画像を読み込めません。画像ファイルのパスを確認してください。</string>
+    <string name="masalah_keamanan_koneksi">サーバーへのセキュリティ接続の問題。代替接続を試行中...</string>
+    <string name="masalah_sertifikat_server">サーバー証明書の問題。代替接続を試行中...</string>
+    <string name="server_tidak_dapat_diakses">サーバーにアクセスできません。インターネット接続を確認してください。</string>
+    <string name="gagal_terhubung_server">サーバーへの接続に失敗しました。インターネット接続を確認してください。</string>
+    <string name="processing_failed">処理に失敗しました: %s</string>
+    <string name="baru_saja">今</string>
+    <string name="menit_yang_lalu">%d分前</string>
+    <string name="jam_yang_lalu">%d時間前</string>
+    <string name="hari_yang_lalu">%d日前</string>
+
+    <!-- String resources untuk camera files -->
+    <string name="s_gelap">S.暗い</string>
+    <string name="gelap">暗い</string>
+    <string name="s_terang">S.明るい</string>
+    <string name="terang">明るい</string>
+    <string name="bagus">良好</string>
+    <string name="focusing">フォーカス中...</string>
+    <string name="gagal_focus">フォーカス失敗</string>
+    <string name="error">エラー</string>
+    <string name="konfigurasi_kamera_gagal">カメラ設定に失敗しました</string>
+    <string name="kamera_sedang_digunakan">カメラは他のアプリで使用中です</string>
+    <string name="terlalu_banyak_kamera">使用中のカメラが多すぎます</string>
+    <string name="kamera_dinonaktifkan">カメラはシステムによって無効化されています</string>
+    <string name="error_fatal_kamera">致命的なカメラエラー</string>
+    <string name="error_kamera_tidak_dikenal">不明なカメラエラー</string>
+    <string name="error_tidak_dikenal">不明なエラー</string>
+    <string name="error_penyimpanan_file">ファイル保存エラー</string>
+    <string name="pengambilan_foto_gagal">写真撮影に失敗しました</string>
+    <string name="kamera_tertutup">カメラが閉じられています</string>
+    <string name="kamera_tidak_valid">無効なカメラ</string>
+    <string name="gagal_mengambil_foto">写真の撮影に失敗しました</string>
+    <string name="permission_kamera_diperlukan">カメラの許可が必要です</string>
+    <string name="gagal_menginisialisasi_kamera">カメラの初期化に失敗しました</string>
+
+    <!-- String resources untuk CameraActivity -->
+    <string name="gagal_membuka_galeri">ギャラリーを開けませんでした</string>
+    <string name="memproses_gambar_dari_galeri">ギャラリーから画像を処理中...</string>
+    <string name="gagal_menyimpan_database">データベースへの保存に失敗しました</string>
+    <string name="gagal_memproses_gambar">画像の処理に失敗しました</string>
+    <string name="error_generic">エラー: %s</string>
+    <string name="gambar_disimpan_success">画像が保存されました！履歴で分析の進捗を確認してください。</string>
+    <string name="error_klasifikasi">分類エラー: %s</string>
+    <string name="processing_status">処理中...</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection">言語選択</string>
+    <string name="language_indonesia">インドネシア語</string>
+    <string name="language_english">英語</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_korean">韓国語</string>
+    <string name="language_thai">タイ語</string>
+    <string name="language_changed">言語が正常に変更されました</string>
+    <string name="language_change_failed">言語の変更に失敗しました</string>
+
+    <!-- Panduan Additional Strings -->
+    <string name="video_panduan">ビデオガイド</string>
+    <string name="panduan_lengkap_deteksi_katarak">白内障検出完全ガイド</string>
+    <string name="panduan_penggunaan_lensa_kontak">コンタクトレンズ使用ガイド</string>
+    <string name="panduan_step_by_step_deteksi">EyeSphereアプリの機能を使用して目の病気を独立して検出するためのステップバイステップガイド。</string>
+    <string name="panduan_lengkap_lensa_kontak">目の健康のための安全で正しいコンタクトレンズ使用の完全ガイド。</string>
+    <string name="kategori_panduan">ガイド</string>
+
+    <!-- Detail Activity Strings -->
+    <string name="detail_hasil_analisis">分析結果詳細</string>
+    <string name="menunggu_antrian">キューで待機中...</string>
+    <string name="memproses_analisis">分析処理中...</string>
+    <string name="memproses">処理中...</string>
+    <string name="sedang_diproses">処理中...</string>
+    <string name="menunggu_hasil_analisis">分析結果を待機中</string>
+    <string name="gambar_sedang_dianalisis">画像がAIを使用して分析されています。分類結果を確認するまでしばらくお待ちください。</string>
+
+    <!-- Camera Brightness Messages -->
+    <string name="cahaya_terlalu_gelap">写真に適した光が暗すぎます</string>
+    <string name="cahaya_terlalu_terang">写真に適した光が明るすぎます</string>
+
+    <!-- Camera Toast Messages -->
+    <string name="foto_disimpan_success">写真が保存されました！履歴で分析の進捗を確認してください。</string>
+    
+    <!-- Processing Animation Dialog -->
+    <string name="memproses_gambar_title">画像処理中...</string>
+    <string name="memproses_gambar_message">画像が処理され、データベースに保存されています。しばらくお待ちください...</string>
+    
+    <!-- Notification Strings -->
+    <string name="classification_completed_channel_name">分類完了</string>
+    <string name="classification_completed_channel_desc">画像分類が完了した時の通知</string>
+    <string name="classification_completed_title">分類完了！</string>
+    <string name="classification_completed_text">結果：%1$s (%2$s)</string>
+    <string name="classification_completed_big_text">分類完了：%1$s (%2$s)。詳細はタップしてください。</string>
+    <string name="classification_failed_title">分類失敗</string>
+    <string name="classification_failed_text">画像処理中にエラーが発生しました</string>
+    <string name="classification_failed_big_text">画像分類に失敗しました：%1$s。もう一度お試しいただくか、インターネット接続を確認してください。</string>
+
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Background circle with gradient effect -->
+    <path
+        android:fillColor="#F8FFFFFF"
+        android:pathData="M100,100m-80,0a80,80 0,1 1,160 0a80,80 0,1 1,-160 0" />
+    
+    <!-- Eye shape with better design -->
+    <path
+        android:fillColor="#1976D2"
+        android:pathData="M100,80m-30,0a30,30 0,1 1,60 0a30,30 0,1 1,-60 0" />
+    
+    <!-- Eye highlight -->
+    <path
+        android:fillColor="#E3F2FD"
+        android:pathData="M85,70m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" />
+    
+    <!-- Pupil with depth -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M100,80m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    
+    <!-- Pupil highlight -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M95,75m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    
+    <!-- Processing dots with better spacing -->
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M65,150m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M100,150m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M135,150m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    
+    <!-- Additional decorative elements -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:pathData="M100,100m-90,0a90,90 0,1 1,180 0a90,90 0,1 1,-180 0"
+        android:strokeWidth="2"
+        android:strokeColor="#E0E0E0" />
+    
+</vector>

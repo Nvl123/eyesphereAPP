@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_utama">
+
+
+    <fragment
+        android:id="@+id/navigation_utama"
+        android:name="com.dicoding.eyesphere_nav.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/navigation_riwayat"
+        android:name="com.dicoding.eyesphere_nav.ui.History.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/navigation_panduan"
+        android:name="com.dicoding.eyesphere_nav.ui.panduan.PanduanFragment"
+        android:label="fragment_panduan"
+        tools:layout="@layout/fragment_panduan" />
+</navigation>

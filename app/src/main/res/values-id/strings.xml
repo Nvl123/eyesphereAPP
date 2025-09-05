@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The eyesphere</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dashboard">Dasbor</string>
+    <string name="title_notifications">Notifikasi</string>
+
+    <string name="utama">Utama</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="panduan">Panduan</string>
+    <string name="daya">40%</string>
+    <string name="daya_baterai">Daya Baterai</string>
+    <string name="status_koneksi">Terkoneksi</string>
+    <string name="tanggal">5 feb</string>
+    <string name="tittle">Katarak</string>
+    <string name="time">10.10.12</string>
+    <string name="settings">Pengaturan</string>
+    <string name="kecerahan">Kecerahan</string>
+    <string name="sedang">Bagus</string>
+    <string name="fokus">Fokus</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="mode_terang">Mode Terang</string>
+    <string name="mode_gelap">Mode Gelap</string>
+    <string name="on">Aktif</string>
+    <string name="faq">Pertanyaan Umum</string>
+    <string name="hubungi_pengembang">Hubungi Pengembang</string>
+    <string name="cara_penggunaan">Cara Penggunaan</string>
+    <string name="panduan_penggunaan">Panduan Penggunaan</string>
+    <string name="artikel_terkait">Artikel Terkait</string>
+    <string name="buku_panduan">Buku Panduan</string>
+    <string name="video_panduan">Video Panduan</string>
+
+    <!-- Array untuk kondisi -->
+    <string-array name="condition_array">
+        <item>katarak</item>
+        <item>glaukom</item>
+        <item>retinopati diabetik</item>
+        <item>katarak</item>
+        <item>glaukom</item>
+        <item>katarak</item>
+        <item>katarak</item>
+        <item>katarak</item>
+        <item>glaukom</item>
+        <item>glaukom</item>
+        <item>glaukom</item>
+        <item>katarak</item>
+        <item>retinopati diabetik</item>
+        <item>glaukom</item>
+        <item>katarak</item>
+    </string-array>
+
+    <!-- Array untuk tanggal -->
+    <string-array name="date_array">
+        <item>01 Jan</item>
+        <item>02 Jan</item>
+        <item>03 Jan</item>
+        <item>04 Jan</item>
+        <item>05 Jan</item>
+        <item>06 Jan</item>
+        <item>07 Jan</item>
+        <item>08 Jan</item>
+        <item>09 Jan</item>
+        <item>10 Jan</item>
+        <item>11 Jan</item>
+        <item>12 Jan</item>
+        <item>13 Jan</item>
+        <item>14 Jan</item>
+        <item>15 Jan</item>
+    </string-array>
+
+    <!-- Array untuk waktu -->
+    <string-array name="time_array">
+        <item>10:10:10</item>
+        <item>10:20:10</item>
+        <item>10:30:10</item>
+        <item>10:40:10</item>
+        <item>10:50:10</item>
+        <item>11:00:10</item>
+        <item>11:10:10</item>
+        <item>11:20:10</item>
+        <item>11:30:10</item>
+        <item>11:40:10</item>
+        <item>11:50:10</item>
+        <item>12:00:10</item>
+        <item>12:10:10</item>
+        <item>12:20:10</item>
+        <item>12:30:10</item>
+    </string-array>
+
+    <!-- Array untuk panduan horizontal -->
+    <integer-array name="photo_panduan">
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+    </integer-array>
+
+    <string-array name="text_panduan">
+        <item>@string/buku_panduan</item>
+        <item>@string/video_panduan</item>
+        <item>@string/panduan_lengkap_deteksi_katarak</item>
+        <item>@string/panduan_penggunaan_lensa_kontak</item>
+        <item>@string/panduan_lengkap_deteksi_katarak</item>
+    </string-array>
+
+    <!-- Array untuk panduan vertical -->
+    <integer-array name="photo_panduan_vertical">
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+        <item>@drawable/panduan_bg</item>
+    </integer-array>
+
+    <string-array name="title_panduan_vertical">
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+    </string-array>
+
+    <string-array name="description_panduan_vertical">
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+        <item>@string/panduan_lengkap_lensa_kontak</item>
+        <item>@string/panduan_step_by_step_deteksi</item>
+    </string-array>
+
+    <string-array name="category_panduan_vertical">
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+        <item>@string/kategori_panduan</item>
+    </string-array>
+
+    <!-- String resources untuk layout files -->
+    <string name="ambil_gambar">Ambil Gambar</string>
+    <string name="persen_0">0%</string>
+    <string name="tanggal_label">Tanggal</string>
+    <string name="waktu_label">Waktu</string>
+    <string name="deskripsi_label">Deskripsi</string>
+    <string name="saran_penanganan_medis">🩺 Saran Penanganan Medis</string>
+    <string name="powered_by_ai">📱 Powered by AI Server</string>
+    <string name="disclaimer">⚠️ Disclaimer</string>
+    <string name="disclaimer_text">Hasil analisis ini hanya sebagai referensi dan tidak menggantikan diagnosis medis profesional. Untuk diagnosis yang akurat dan penanganan yang tepat, selalu konsultasikan dengan dokter mata.</string>
+    <string name="kategori_label">Kategori</string>
+    <string name="judul_artikel">Judul Artikel</string>
+    <string name="deskripsi_artikel">Deskripsi artikel yang menjelaskan tentang topik yang dibahas dalam artikel ini dengan detail yang cukup lengkap.</string>
+
+    <!-- String resources untuk Kotlin files -->
+    <string name="memproses_gambar">Memproses %d gambar...</string>
+    <string name="classification_queue">Antrian Klasifikasi</string>
+    <string name="shows_progress">Menampilkan progress pemrosesan klasifikasi gambar</string>
+    <string name="eyesphere_classification">Klasifikasi EyeSphere</string>
+    <string name="gambar_tidak_dapat_dimuat">Gambar tidak dapat dimuat. Periksa path file gambar.</string>
+    <string name="masalah_keamanan_koneksi">Masalah keamanan koneksi ke server. Mencoba koneksi alternatif...</string>
+    <string name="masalah_sertifikat_server">Masalah sertifikat server. Mencoba koneksi alternatif...</string>
+    <string name="server_tidak_dapat_diakses">Server tidak dapat diakses. Periksa koneksi internet Anda.</string>
+    <string name="gagal_terhubung_server">Gagal terhubung ke server. Periksa koneksi internet Anda.</string>
+    <string name="processing_failed">Pemrosesan gagal: %s</string>
+    <string name="baru_saja">Baru saja</string>
+    <string name="menit_yang_lalu">%d menit yang lalu</string>
+    <string name="jam_yang_lalu">%d jam yang lalu</string>
+    <string name="hari_yang_lalu">%d hari yang lalu</string>
+
+    <!-- String resources untuk camera files -->
+    <string name="s_gelap">S. Gelap</string>
+    <string name="gelap">Gelap</string>
+    <string name="s_terang">S.Terang</string>
+    <string name="terang">Terang</string>
+    <string name="bagus">Bagus</string>
+    <string name="focusing">Memfokuskan...</string>
+    <string name="gagal_focus">Gagal Fokus</string>
+    <string name="error">Error</string>
+    <string name="konfigurasi_kamera_gagal">Konfigurasi kamera gagal</string>
+    <string name="kamera_sedang_digunakan">Kamera sedang digunakan aplikasi lain</string>
+    <string name="terlalu_banyak_kamera">Terlalu banyak kamera yang digunakan</string>
+    <string name="kamera_dinonaktifkan">Kamera dinonaktifkan oleh sistem</string>
+    <string name="error_fatal_kamera">Error fatal pada kamera</string>
+    <string name="error_kamera_tidak_dikenal">Error kamera tidak dikenal</string>
+    <string name="error_tidak_dikenal">Error tidak dikenal</string>
+    <string name="error_penyimpanan_file">Error penyimpanan file</string>
+    <string name="pengambilan_foto_gagal">Pengambilan foto gagal</string>
+    <string name="kamera_tertutup">Kamera tertutup</string>
+    <string name="kamera_tidak_valid">Kamera tidak valid</string>
+    <string name="gagal_mengambil_foto">Gagal mengambil foto</string>
+    <string name="permission_kamera_diperlukan">Permission kamera diperlukan</string>
+    <string name="gagal_menginisialisasi_kamera">Gagal menginisialisasi kamera</string>
+
+    <!-- String resources untuk CameraActivity -->
+    <string name="gagal_membuka_galeri">Gagal membuka galeri</string>
+    <string name="memproses_gambar_dari_galeri">Memproses gambar dari galeri...</string>
+
+    <!-- String resources untuk panduan -->
+    <string name="panduan_step_by_step_deteksi">Panduan step-by-step menggunakan fitur-fitur aplikasi Eyesphere untuk deteksi penyakit mata secara mandiri.</string>
+    <string name="panduan_lengkap_lensa_kontak">Panduan lengkap penggunaan lensa kontak yang aman dan benar untuk kesehatan mata.</string>
+    <string name="panduan_lengkap_deteksi_katarak">Panduan lengkap deteksi katarak menggunakan aplikasi EyeSphere.</string>
+    <string name="panduan_penggunaan_lensa_kontak">Panduan penggunaan lensa kontak yang aman.</string>
+    <string name="kategori_panduan">Panduan</string>
+
+    <!-- String resources untuk language -->
+    <string name="language_changed">Bahasa berhasil diubah</string>
+    <string name="language_change_failed">Gagal mengubah bahasa</string>
+    
+    <!-- Notification Strings -->
+    <string name="classification_completed_channel_name">Klasifikasi Selesai</string>
+    <string name="classification_completed_channel_desc">Notifikasi ketika klasifikasi gambar selesai</string>
+    <string name="classification_completed_title">Klasifikasi Selesai!</string>
+    <string name="classification_completed_text">Hasil: %1$s (%2$s)</string>
+    <string name="classification_completed_big_text">Klasifikasi selesai: %1$s (%2$s). Ketuk untuk detail lengkap.</string>
+    <string name="classification_failed_title">Klasifikasi Gagal</string>
+    <string name="classification_failed_text">Terjadi kesalahan saat memproses gambar</string>
+    <string name="classification_failed_big_text">Klasifikasi gambar gagal: %1$s. Silakan coba lagi atau periksa koneksi internet Anda.</string>
+</resources>

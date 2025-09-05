@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The eyesphere</string>
+    <string name="title_home">หน้าแรก</string>
+    <string name="title_dashboard">แดชบอร์ด</string>
+    <string name="title_notifications">การแจ้งเตือน</string>
+
+    <string name="utama">หลัก</string>
+    <string name="riwayat">ประวัติ</string>
+    <string name="panduan">คู่มือ</string>
+    <string name="daya">40%</string>
+    <string name="daya_baterai">พลังงานแบตเตอรี่</string>
+    <string name="status_koneksi">เชื่อมต่อแล้ว</string>
+    <string name="tanggal">5 ก.พ.</string>
+    <string name="tittle">ต้อกระจก</string>
+    <string name="time">10:10:12</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="kecerahan">ความสว่าง</string>
+    <string name="sedang">ดี</string>
+    <string name="fokus">โฟกัส</string>
+    <string name="bahasa">ภาษา</string>
+    <string name="mode_terang">โหมดสว่าง</string>
+    <string name="mode_gelap">โหมดมืด</string>
+    <string name="on">เปิด</string>
+    <string name="faq">คำถามที่พบบ่อย</string>
+    <string name="hubungi_pengembang">ติดต่อนักพัฒนา</string>
+    <string name="cara_penggunaan">วิธีใช้</string>
+    <string name="panduan_penggunaan">คู่มือการใช้งาน</string>
+    <string name="artikel_terkait">บทความที่เกี่ยวข้อง</string>
+    <string name="buku_panduan">คู่มือผู้ใช้</string>
+
+    <!-- String resources untuk layout files -->
+    <string name="ambil_gambar">ถ่ายภาพ</string>
+    <string name="persen_0">0%</string>
+    <string name="tanggal_label">วันที่</string>
+    <string name="waktu_label">เวลา</string>
+    <string name="deskripsi_label">คำอธิบาย</string>
+    <string name="saran_penanganan_medis">🩺 คำแนะนำการรักษาทางการแพทย์</string>
+    <string name="powered_by_ai">📱 ขับเคลื่อนด้วย AI Server</string>
+    <string name="disclaimer">⚠️ ข้อจำกัดความรับผิดชอบ</string>
+    <string name="disclaimer_text">ผลการวิเคราะห์นี้เป็นเพียงข้อมูลอ้างอิงและไม่สามารถแทนที่การวินิจฉัยทางการแพทย์ที่เชี่ยวชาญได้ สำหรับการวินิจฉัยที่แม่นยำและการรักษาที่เหมาะสม โปรดปรึกษาจักษุแพทย์เสมอ</string>
+    <string name="kategori_label">หมวดหมู่</string>
+    <string name="judul_artikel">ชื่อบทความ</string>
+    <string name="deskripsi_artikel">คำอธิบายบทความที่อธิบายเกี่ยวกับหัวข้อที่กล่าวถึงในบทความนี้ด้วยรายละเอียดที่เพียงพอ</string>
+
+    <!-- String resources untuk Kotlin files -->
+    <string name="memproses_gambar">กำลังประมวลผลภาพ %d รูป...</string>
+    <string name="classification_queue">คิวการจำแนก</string>
+    <string name="shows_progress">แสดงความคืบหน้าของการประมวลผลการจำแนกภาพ</string>
+    <string name="eyesphere_classification">การจำแนก EyeSphere</string>
+    <string name="gambar_tidak_dapat_dimuat">ไม่สามารถโหลดภาพได้ ตรวจสอบเส้นทางไฟล์ภาพ</string>
+    <string name="masalah_keamanan_koneksi">ปัญหาการเชื่อมต่อความปลอดภัยไปยังเซิร์ฟเวอร์ กำลังพยายามเชื่อมต่อทางเลือก...</string>
+    <string name="masalah_sertifikat_server">ปัญหาซีร์ทิฟิเคทเซิร์ฟเวอร์ กำลังพยายามเชื่อมต่อทางเลือก...</string>
+    <string name="server_tidak_dapat_diakses">ไม่สามารถเข้าถึงเซิร์ฟเวอร์ได้ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ</string>
+    <string name="gagal_terhubung_server">ล้มเหลวในการเชื่อมต่อกับเซิร์ฟเวอร์ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ</string>
+    <string name="processing_failed">การประมวลผลล้มเหลว: %s</string>
+    <string name="baru_saja">เมื่อสักครู่</string>
+    <string name="menit_yang_lalu">%d นาทีที่แล้ว</string>
+    <string name="jam_yang_lalu">%d ชั่วโมงที่แล้ว</string>
+    <string name="hari_yang_lalu">%d วันที่แล้ว</string>
+
+    <!-- String resources untuk camera files -->
+    <string name="s_gelap">S.มืด</string>
+    <string name="gelap">มืด</string>
+    <string name="s_terang">S.สว่าง</string>
+    <string name="terang">สว่าง</string>
+    <string name="bagus">ดี</string>
+    <string name="focusing">กำลังโฟกัส...</string>
+    <string name="gagal_focus">โฟกัสล้มเหลว</string>
+    <string name="error">ข้อผิดพลาด</string>
+    <string name="konfigurasi_kamera_gagal">การกำหนดค่ากล้องล้มเหลว</string>
+    <string name="kamera_sedang_digunakan">กล้องกำลังถูกใช้โดยแอปอื่น</string>
+    <string name="terlalu_banyak_kamera">กล้องที่ใช้งานอยู่มีมากเกินไป</string>
+    <string name="kamera_dinonaktifkan">กล้องถูกปิดใช้งานโดยระบบ</string>
+    <string name="error_fatal_kamera">ข้อผิดพลาดร้ายแรงของกล้อง</string>
+    <string name="error_kamera_tidak_dikenal">ข้อผิดพลาดกล้องที่ไม่ทราบ</string>
+    <string name="error_tidak_dikenal">ข้อผิดพลาดที่ไม่ทราบ</string>
+    <string name="error_penyimpanan_file">ข้อผิดพลาดการบันทึกไฟล์</string>
+    <string name="pengambilan_foto_gagal">การถ่ายภาพล้มเหลว</string>
+    <string name="kamera_tertutup">กล้องถูกปิด</string>
+    <string name="kamera_tidak_valid">กล้องไม่ถูกต้อง</string>
+    <string name="gagal_mengambil_foto">ล้มเหลวในการถ่ายภาพ</string>
+    <string name="permission_kamera_diperlukan">ต้องการสิทธิ์กล้อง</string>
+    <string name="gagal_menginisialisasi_kamera">ล้มเหลวในการเริ่มต้นกล้อง</string>
+
+    <!-- String resources untuk CameraActivity -->
+    <string name="gagal_membuka_galeri">ไม่สามารถเปิดแกลเลอรี่ได้</string>
+    <string name="memproses_gambar_dari_galeri">กำลังประมวลผลภาพจากแกลเลอรี่...</string>
+    <string name="gagal_menyimpan_database">ล้มเหลวในการบันทึกลงฐานข้อมูล</string>
+    <string name="gagal_memproses_gambar">ล้มเหลวในการประมวลผลภาพ</string>
+    <string name="error_generic">ข้อผิดพลาด: %s</string>
+    <string name="gambar_disimpan_success">ภาพถูกบันทึกแล้ว! ตรวจสอบประวัติเพื่อดูความคืบหน้าการวิเคราะห์</string>
+    <string name="error_klasifikasi">ข้อผิดพลาดการจำแนก: %s</string>
+    <string name="processing_status">กำลังประมวลผล...</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection">เลือกภาษา</string>
+    <string name="language_indonesia">อินโดนีเซีย</string>
+    <string name="language_english">อังกฤษ</string>
+    <string name="language_japanese">ญี่ปุ่น</string>
+    <string name="language_korean">เกาหลี</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_changed">เปลี่ยนภาษาสำเร็จแล้ว</string>
+    <string name="language_change_failed">เปลี่ยนภาษาไม่สำเร็จ</string>
+
+    <!-- Panduan Additional Strings -->
+    <string name="video_panduan">คู่มือวิดีโอ</string>
+    <string name="panduan_lengkap_deteksi_katarak">คู่มือการตรวจต้อกระจกแบบสมบูรณ์</string>
+    <string name="panduan_penggunaan_lensa_kontak">คู่มือการใช้คอนแทคเลนส์</string>
+    <string name="panduan_step_by_step_deteksi">คู่มือทีละขั้นตอนการใช้คุณสมบัติของแอป EyeSphere สำหรับการตรวจโรคตาแบบอิสระ</string>
+    <string name="panduan_lengkap_lensa_kontak">คู่มือการใช้งานคอนแทคเลนส์ที่ปลอดภัยและถูกต้องสำหรับสุขภาพตา</string>
+    <string name="kategori_panduan">คู่มือ</string>
+
+    <!-- Detail Activity Strings -->
+    <string name="detail_hasil_analisis">รายละเอียดผลการวิเคราะห์</string>
+    <string name="menunggu_antrian">รอในคิว...</string>
+    <string name="memproses_analisis">กำลังประมวลผลการวิเคราะห์...</string>
+    <string name="memproses">กำลังประมวลผล...</string>
+    <string name="sedang_diproses">กำลังประมวลผล...</string>
+    <string name="menunggu_hasil_analisis">รอผลการวิเคราะห์</string>
+    <string name="gambar_sedang_dianalisis">ภาพกำลังถูกวิเคราะห์โดยใช้ AI กรุณารอสักครู่เพื่อดูผลการจำแนก</string>
+
+    <!-- Camera Brightness Messages -->
+    <string name="cahaya_terlalu_gelap">แสงมืดเกินไปสำหรับการถ่ายภาพที่ดี</string>
+    <string name="cahaya_terlalu_terang">แสงสว่างเกินไปสำหรับการถ่ายภาพที่ดี</string>
+
+    <!-- Camera Toast Messages -->
+    <string name="foto_disimpan_success">บันทึกรูปภาพแล้ว! ตรวจสอบประวัติเพื่อดูความคืบหน้าการวิเคราะห์</string>
+    
+    <!-- Processing Animation Dialog -->
+    <string name="memproses_gambar_title">กำลังประมวลผลภาพ...</string>
+    <string name="memproses_gambar_message">ภาพกำลังถูกประมวลผลและบันทึกลงฐานข้อมูล กรุณารอสักครู่...</string>
+    
+    <!-- Notification Strings -->
+    <string name="classification_completed_channel_name">การจำแนกเสร็จสิ้น</string>
+    <string name="classification_completed_channel_desc">การแจ้งเตือนเมื่อการจำแนกภาพเสร็จสิ้น</string>
+    <string name="classification_completed_title">การจำแนกเสร็จสิ้น!</string>
+    <string name="classification_completed_text">ผลลัพธ์: %1$s (%2$s)</string>
+    <string name="classification_completed_big_text">การจำแนกเสร็จสิ้น: %1$s (%2$s) แตะเพื่อดูรายละเอียด</string>
+    <string name="classification_failed_title">การจำแนกล้มเหลว</string>
+    <string name="classification_failed_text">เกิดข้อผิดพลาดขณะประมวลผลภาพ</string>
+    <string name="classification_failed_big_text">การจำแนกภาพล้มเหลว: %1$s กรุณาลองใหม่อีกครั้งหรือตรวจสอบการเชื่อมต่ออินเทอร์เน็ต</string>
+
+</resources>

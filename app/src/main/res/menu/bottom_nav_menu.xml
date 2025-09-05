@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_utama"
+        android:icon="@drawable/home_24px"
+        android:title="@string/utama"/>
+    <item
+        android:id="@+id/navigation_riwayat"
+        android:icon="@drawable/history_24px"
+        android:title="@string/riwayat"/>
+
+    <item
+        android:id="@+id/navigation_panduan"
+        android:icon="@drawable/book_2_24px"
+        android:title="@string/panduan"/>
+
+</menu>

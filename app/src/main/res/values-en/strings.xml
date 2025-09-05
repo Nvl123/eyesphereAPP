@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The eyesphere</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="utama">Main</string>
+    <string name="riwayat">History</string>
+    <string name="panduan">Guide</string>
+    <string name="daya">40%</string>
+    <string name="daya_baterai">Battery Power</string>
+    <string name="status_koneksi">Connected</string>
+    <string name="tanggal">5 Feb</string>
+    <string name="tittle">Cataract</string>
+    <string name="time">10:10:12</string>
+    <string name="settings">Settings</string>
+    <string name="kecerahan">Brightness</string>
+    <string name="sedang">Good</string>
+    <string name="fokus">Focus</string>
+    <string name="bahasa">Language</string>
+    <string name="mode_terang">Light Mode</string>
+    <string name="mode_gelap">Dark Mode</string>
+    <string name="on">On</string>
+    <string name="faq">Frequently Asked Questions</string>
+    <string name="hubungi_pengembang">Contact Developer</string>
+    <string name="cara_penggunaan">How to Use</string>
+    <string name="panduan_penggunaan">Usage Guide</string>
+    <string name="artikel_terkait">Related Articles</string>
+    <string name="buku_panduan">User Manual</string>
+
+    <!-- String resources untuk layout files -->
+    <string name="ambil_gambar">Take Picture</string>
+    <string name="persen_0">0%</string>
+    <string name="tanggal_label">Date</string>
+    <string name="waktu_label">Time</string>
+    <string name="deskripsi_label">Description</string>
+    <string name="saran_penanganan_medis">🩺 Medical Treatment Recommendations</string>
+    <string name="powered_by_ai">📱 Powered by AI Server</string>
+    <string name="disclaimer">⚠️ Disclaimer</string>
+    <string name="disclaimer_text">This analysis result is for reference only and does not replace professional medical diagnosis. For accurate diagnosis and proper treatment, always consult with an eye doctor.</string>
+    <string name="kategori_label">Category</string>
+    <string name="judul_artikel">Article Title</string>
+    <string name="deskripsi_artikel">Article description that explains the topic discussed in this article with sufficient detail.</string>
+
+    <!-- String resources untuk Kotlin files -->
+    <string name="memproses_gambar">Processing %d images...</string>
+    <string name="classification_queue">Classification Queue</string>
+    <string name="shows_progress">Shows progress of image classification processing</string>
+    <string name="eyesphere_classification">EyeSphere Classification</string>
+    <string name="gambar_tidak_dapat_dimuat">Image cannot be loaded. Check the image file path.</string>
+    <string name="masalah_keamanan_koneksi">Security connection issue to server. Trying alternative connection...</string>
+    <string name="masalah_sertifikat_server">Server certificate issue. Trying alternative connection...</string>
+    <string name="server_tidak_dapat_diakses">Server cannot be accessed. Check your internet connection.</string>
+    <string name="gagal_terhubung_server">Failed to connect to server. Check your internet connection.</string>
+    <string name="processing_failed">Processing failed: %s</string>
+    <string name="baru_saja">Just now</string>
+    <string name="menit_yang_lalu">%d minutes ago</string>
+    <string name="jam_yang_lalu">%d hours ago</string>
+    <string name="hari_yang_lalu">%d days ago</string>
+
+    <!-- String resources untuk camera files -->
+    <string name="s_gelap">S. Dark</string>
+    <string name="gelap">Dark</string>
+    <string name="s_terang">S.Bright</string>
+    <string name="terang">Bright</string>
+    <string name="bagus">Good</string>
+    <string name="focusing">Focusing...</string>
+    <string name="gagal_focus">Focus Failed</string>
+    <string name="error">Error</string>
+    <string name="konfigurasi_kamera_gagal">Camera configuration failed</string>
+    <string name="kamera_sedang_digunakan">Camera is being used by another app</string>
+    <string name="terlalu_banyak_kamera">Too many cameras in use</string>
+    <string name="kamera_dinonaktifkan">Camera disabled by system</string>
+    <string name="error_fatal_kamera">Fatal camera error</string>
+    <string name="error_kamera_tidak_dikenal">Unknown camera error</string>
+    <string name="error_tidak_dikenal">Unknown error</string>
+    <string name="error_penyimpanan_file">File storage error</string>
+    <string name="pengambilan_foto_gagal">Photo capture failed</string>
+    <string name="kamera_tertutup">Camera closed</string>
+    <string name="kamera_tidak_valid">Invalid camera</string>
+    <string name="gagal_mengambil_foto">Failed to take photo</string>
+    <string name="permission_kamera_diperlukan">Camera permission required</string>
+    <string name="gagal_menginisialisasi_kamera">Failed to initialize camera</string>
+
+    <!-- String resources untuk CameraActivity -->
+    <string name="gagal_membuka_galeri">Failed to open gallery</string>
+    <string name="memproses_gambar_dari_galeri">Processing image from gallery...</string>
+    <string name="gagal_menyimpan_database">Failed to save to database</string>
+    <string name="gagal_memproses_gambar">Failed to process image</string>
+    <string name="error_generic">Error: %s</string>
+    <string name="gambar_disimpan_success">Image saved! Check History to see analysis progress.</string>
+    <string name="error_klasifikasi">Classification error: %s</string>
+    <string name="processing_status">Processing...</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection">Language Selection</string>
+    <string name="language_indonesia">Indonesia</string>
+    <string name="language_english">English</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_changed">Language changed successfully</string>
+    <string name="language_change_failed">Failed to change language</string>
+
+    <!-- Panduan Additional Strings -->
+    <string name="video_panduan">Video Guide</string>
+    <string name="panduan_lengkap_deteksi_katarak">Complete Cataract Detection Guide</string>
+    <string name="panduan_penggunaan_lensa_kontak">Contact Lens Usage Guide</string>
+    <string name="panduan_step_by_step_deteksi">Step-by-step guide using Eyesphere app features for independent eye disease detection.</string>
+    <string name="panduan_lengkap_lensa_kontak">Complete guide for safe and correct contact lens usage for eye health.</string>
+    <string name="kategori_panduan">Guide</string>
+
+    <!-- Detail Activity Strings -->
+    <string name="detail_hasil_analisis">Analysis Result Detail</string>
+    <string name="menunggu_antrian">Waiting in Queue...</string>
+    <string name="memproses_analisis">Processing Analysis...</string>
+    <string name="memproses">Processing...</string>
+    <string name="sedang_diproses">Being Processed...</string>
+    <string name="menunggu_hasil_analisis">Waiting for analysis results</string>
+    <string name="gambar_sedang_dianalisis">Image is being analyzed using AI. Please wait a moment to see the classification results.</string>
+
+    <!-- Camera Brightness Messages -->
+    <string name="cahaya_terlalu_gelap">Light is too dark for good photos</string>
+    <string name="cahaya_terlalu_terang">Light is too bright for good photos</string>
+
+    <!-- Camera Toast Messages -->
+    <string name="foto_disimpan_success">Photo saved! Check History to see analysis progress.</string>
+    
+    <!-- Processing Animation Dialog -->
+    <string name="memproses_gambar_title">Processing Image...</string>
+    <string name="memproses_gambar_message">Image is being processed and saved to database. Please wait a moment...</string>
+    
+    <!-- Notification Strings -->
+    <string name="classification_completed_channel_name">Classification Completed</string>
+    <string name="classification_completed_channel_desc">Notifications when image classification is completed</string>
+    <string name="classification_completed_title">Classification Completed!</string>
+    <string name="classification_completed_text">Result: %1$s (%2$s)</string>
+    <string name="classification_completed_big_text">Classification completed: %1$s (%2$s). Tap for full details.</string>
+    <string name="classification_failed_title">Classification Failed</string>
+    <string name="classification_failed_text">An error occurred while processing the image</string>
+    <string name="classification_failed_big_text">Image classification failed: %1$s. Please try again or check your internet connection.</string>
+
+</resources>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <TextView
+        android:id="@+id/tv_settings_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/settings"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Language Selection Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_bahasa"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_bahasa"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/language_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bahasa"
+        app:layout_constraintStart_toStartOf="@id/btn_bahasa"
+        app:layout_constraintTop_toTopOf="@id/btn_bahasa"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_bahasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/bahasa"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_bahasa"
+        app:layout_constraintStart_toStartOf="@id/btn_bahasa"
+        app:layout_constraintTop_toTopOf="@id/btn_bahasa" />
+
+    <!-- Brightness Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_brightness"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_bahasa" />
+
+    <ImageView
+        android:id="@+id/img_brightness"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/brightness_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_brightness"
+        app:layout_constraintStart_toStartOf="@id/btn_brightness"
+        app:layout_constraintTop_toTopOf="@id/btn_brightness"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/kecerahan"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_brightness"
+        app:layout_constraintStart_toStartOf="@id/btn_brightness"
+        app:layout_constraintTop_toTopOf="@id/btn_brightness" />
+
+    <!-- Focus Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_focus"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_brightness" />
+
+    <ImageView
+        android:id="@+id/img_focus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/focus_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_focus"
+        app:layout_constraintStart_toStartOf="@id/btn_focus"
+        app:layout_constraintTop_toTopOf="@id/btn_focus"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/fokus"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_focus"
+        app:layout_constraintStart_toStartOf="@id/btn_focus"
+        app:layout_constraintTop_toTopOf="@id/btn_focus" />
+
+    <!-- Theme Mode Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_theme"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_focus" />
+
+    <ImageView
+        android:id="@+id/img_theme"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/theme_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_theme"
+        app:layout_constraintStart_toStartOf="@id/btn_theme"
+        app:layout_constraintTop_toTopOf="@id/btn_theme"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/mode_terang"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_theme"
+        app:layout_constraintStart_toStartOf="@id/btn_theme"
+        app:layout_constraintTop_toTopOf="@id/btn_theme" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
