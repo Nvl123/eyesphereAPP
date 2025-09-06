@@ -16,6 +16,8 @@ import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
+    // just ceck the branch
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var bottomBar: SmoothBottomBar
