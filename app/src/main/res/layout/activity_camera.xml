@@ -25,7 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="120dp">
-        
+
+
         <ImageView
             android:id="@+id/esp32_stream_view"
             android:layout_width="240dp"
