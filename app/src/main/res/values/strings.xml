@@ -10,6 +10,13 @@
     <string name="daya">40%</string>
     <string name="daya_baterai">Daya Baterai</string>
     <string name="status_koneksi">Terkoneksi</string>
+    <string name="status_tidak_terkoneksi">Tidak Terkoneksi</string>
+    <string name="status_menghubungkan">Menghubungkan...</string>
+    <string name="status_koneksi_gagal">Koneksi Gagal</string>
+    <string name="dialog_tidak_terkoneksi_title">Koneksi Tidak Tersedia</string>
+    <string name="dialog_tidak_terkoneksi_message">Perangkat belum terhubung ke mikrokontroller. Pastikan mikrokontroller dalam keadaan aktif dan terhubung ke jaringan yang sama.</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coba_lagi">Coba Lagi</string>
     <string name="tanggal">5 feb</string>
     <string name="tittle">Katarak</string>
     <string name="time">10.10.12</string>
@@ -276,6 +283,31 @@
     <!-- Processing Animation Dialog -->
     <string name="memproses_gambar_title">Memproses Gambar...</string>
     <string name="memproses_gambar_message">Gambar sedang diproses dan disimpan ke database. Mohon tunggu sebentar...</string>
+    
+    <!-- ESP32 Connection Strings -->
+    <string name="esp32_ip">http://192.168.1.100:81/stream</string>
+    <string name="esp32_capture_url">http://192.168.1.100/capture</string>
+    <string name="esp32_control_url">http://192.168.1.100/control</string>
+    <string name="led_intensity">Intensitas LED: %d</string>
+    <string name="kontrol_led">Kontrol LED</string>
+    <string name="esp32_stream_connecting">Menghubungkan ke ESP32...</string>
+    <string name="esp32_stream_connected">ESP32 terhubung</string>
+    <string name="esp32_stream_failed">Gagal terhubung ke ESP32</string>
+    <string name="esp32_capture_success">Gambar berhasil diambil dari ESP32</string>
+    <string name="esp32_capture_failed">Gagal mengambil gambar dari ESP32</string>
+    
+    <!-- IP Configuration Strings -->
+    <string name="menu_ip_config">Konfigurasi IP ESP32</string>
+    <string name="ip_config_title">Konfigurasi Alamat IP ESP32</string>
+    <string name="ip_config_message">Masukkan alamat IP perangkat ESP32 Anda:</string>
+    <string name="ip_config_hint">192.168.170.20</string>
+    <string name="ip_config_save">Simpan</string>
+    <string name="ip_config_cancel">Batal</string>
+    <string name="ip_config_reset">Reset</string>
+    <string name="ip_config_invalid">Format alamat IP tidak valid</string>
+    <string name="ip_config_saved">Alamat IP berhasil disimpan</string>
+    <string name="ip_config_error">Error menyimpan alamat IP</string>
+    <string name="ip_config_reset_success">IP direset ke default: %s</string>
     
     <!-- Notification Strings -->
     <string name="classification_completed_channel_name">Klasifikasi Selesai</string>

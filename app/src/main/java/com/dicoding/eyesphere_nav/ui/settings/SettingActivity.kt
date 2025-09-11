@@ -13,6 +13,7 @@ import com.dicoding.eyesphere_nav.utils.ThemeManager
 import com.dicoding.eyesphere_nav.utils.PreferencesManager
 import com.dicoding.eyesphere_nav.utils.TranslationHelper
 import android.util.Log
+import com.dicoding.eyesphere_nav.ui.dialog.ESP32IpConfigDialog
 
 class SettingActivity : AppCompatActivity() {
 
@@ -67,16 +68,23 @@ class SettingActivity : AppCompatActivity() {
             Toast.makeText(this, "Fitur FAQ akan segera hadir", Toast.LENGTH_SHORT).show()
         }
 
+        // ESP32 IP Configuration button
+        binding.btnEsp32Config.setOnClickListener {
+            showEsp32IpConfigDialog()
+        }
+        
+        binding.imgEsp32Config.setOnClickListener {
+            showEsp32IpConfigDialog()
+        }
+        
+        binding.tvEsp32Config.setOnClickListener {
+            showEsp32IpConfigDialog()
+        }
+
         // Developer contact button
         binding.btnDeveloper.setOnClickListener {
             // TODO: Implement developer contact
             Toast.makeText(this, "Fitur hubungi pengembang akan segera hadir", Toast.LENGTH_SHORT).show()
-        }
-        
-        // FAQ button
-        binding.btnFaq.setOnClickListener {
-            // TODO: Implement FAQ
-            Toast.makeText(this, "Fitur FAQ akan segera hadir", Toast.LENGTH_SHORT).show()
         }
     }
     
@@ -168,5 +176,57 @@ class SettingActivity : AppCompatActivity() {
         updateThemeUI()
     }
     
-
+    /**
+     * Test translation service with sample server response
+     */
+    private fun testTranslationService() {
+        try {
+            val sampleServerResponse = "Hasil analisis menunjukkan kondisi mata yang baik. Tidak ada tanda-tanda penyakit serius yang terdeteksi."
+            
+            if (TranslationHelper.isTranslationAvailable()) {
+                Log.d("SettingActivity", "Translation service is available")
+                Toast.makeText(this, "Testing translation service...", Toast.LENGTH_SHORT).show()
+                
+                // Test translation to system language
+                TranslationHelper.translateServerResponseAsync(this, sampleServerResponse) { translatedText ->
+                    Log.d("SettingActivity", "Translation test successful")
+                    Log.d("SettingActivity", "Original: $sampleServerResponse")
+                    Log.d("SettingActivity", "Translated: $translatedText")
+                    
+                    // Show result in UI thread
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@SettingActivity,
+                            "Translation successful!\nOriginal: $sampleServerResponse\nTranslated: $translatedText",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            } else {
+                Log.w("SettingActivity", "Translation service is not available")
+                Toast.makeText(this, "Translation service is not available", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Log.e("SettingActivity", "Error testing translation service", e)
+            Toast.makeText(this, "Error testing translation: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+    
+    /**
+     * Show ESP32 IP Configuration Dialog
+     */
+    private fun showEsp32IpConfigDialog() {
+        try {
+            val dialog = ESP32IpConfigDialog.newInstance()
+            dialog.setOnIpConfiguredListener(object : ESP32IpConfigDialog.OnIpConfiguredListener {
+                override fun onIpConfigured(newIp: String) {
+                    Toast.makeText(this@SettingActivity, "IP ESP32 berhasil diperbarui: $newIp", Toast.LENGTH_LONG).show()
+                }
+            })
+            dialog.show(supportFragmentManager, "ESP32IpConfigDialog")
+        } catch (e: Exception) {
+            Log.e("SettingActivity", "Error showing ESP32 IP config dialog", e)
+            Toast.makeText(this, "Error membuka konfigurasi IP: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

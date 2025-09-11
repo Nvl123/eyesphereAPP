@@ -192,3 +192,6 @@ Dengan perubahan ini, DetailActivity sekarang memiliki:
 
 Saran rekomendasi sekarang akan selalu terlihat dan mendapatkan efek shimmer yang sama dengan elemen text lainnya, memberikan pengalaman pengguna yang lebih konsisten dan informatif! 🎯✨
 
+
+
+

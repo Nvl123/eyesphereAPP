@@ -11,6 +11,13 @@
     <string name="daya">40%</string>
     <string name="daya_baterai">Battery Power</string>
     <string name="status_koneksi">Connected</string>
+    <string name="status_tidak_terkoneksi">Not Connected</string>
+    <string name="status_menghubungkan">Connecting...</string>
+    <string name="status_koneksi_gagal">Connection Failed</string>
+    <string name="dialog_tidak_terkoneksi_title">Connection Unavailable</string>
+    <string name="dialog_tidak_terkoneksi_message">Device is not connected to microcontroller. Make sure the microcontroller is active and connected to the same network.</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coba_lagi">Try Again</string>
     <string name="tanggal">5 Feb</string>
     <string name="tittle">Cataract</string>
     <string name="time">10:10:12</string>
@@ -140,5 +147,30 @@
     <string name="classification_failed_title">Classification Failed</string>
     <string name="classification_failed_text">An error occurred while processing the image</string>
     <string name="classification_failed_big_text">Image classification failed: %1$s. Please try again or check your internet connection.</string>
+    
+    <!-- ESP32 Connection Strings -->
+    <string name="esp32_ip">http://192.168.1.100:81/stream</string>
+    <string name="esp32_capture_url">http://192.168.1.100/capture</string>
+    <string name="esp32_control_url">http://192.168.1.100/control</string>
+    <string name="led_intensity">LED Intensity: %d</string>
+    <string name="kontrol_led">LED Control</string>
+    <string name="esp32_stream_connecting">Connecting to ESP32...</string>
+    <string name="esp32_stream_connected">ESP32 connected</string>
+    <string name="esp32_stream_failed">Failed to connect to ESP32</string>
+    <string name="esp32_capture_success">Image successfully captured from ESP32</string>
+    <string name="esp32_capture_failed">Failed to capture image from ESP32</string>
+    
+    <!-- IP Configuration Strings -->
+    <string name="menu_ip_config">ESP32 IP Configuration</string>
+    <string name="ip_config_title">Configure ESP32 IP Address</string>
+    <string name="ip_config_message">Enter the IP address of your ESP32 device:</string>
+    <string name="ip_config_hint">192.168.170.20</string>
+    <string name="ip_config_save">Save</string>
+    <string name="ip_config_cancel">Cancel</string>
+    <string name="ip_config_reset">Reset</string>
+    <string name="ip_config_invalid">Invalid IP address format</string>
+    <string name="ip_config_saved">IP address saved successfully</string>
+    <string name="ip_config_error">Error saving IP address</string>
+    <string name="ip_config_reset_success">IP reset to default: %s</string>
 
 </resources>

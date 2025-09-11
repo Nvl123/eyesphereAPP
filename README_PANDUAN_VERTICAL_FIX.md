@@ -190,3 +190,6 @@ Item vertical sekarang akan muncul dengan benar dan user dapat melihat semua pan
 
 **Shimmer effect tetap dihapus** dari PanduanFragment untuk menghindari bug text hilang, tetapi **DetailActivity tetap memiliki shimmer effect** yang berfungsi dengan baik. Perbaikan ini hanya mengatasi masalah data loading dan display, bukan mengembalikan shimmer effect.
 
+
+
+
