@@ -11,6 +11,13 @@
     <string name="daya">40%</string>
     <string name="daya_baterai">배터리 잔량</string>
     <string name="status_koneksi">연결됨</string>
+    <string name="status_tidak_terkoneksi">연결되지 않음</string>
+    <string name="status_menghubungkan">연결 중...</string>
+    <string name="status_koneksi_gagal">연결 실패</string>
+    <string name="dialog_tidak_terkoneksi_title">연결을 사용할 수 없음</string>
+    <string name="dialog_tidak_terkoneksi_message">디바이스가 마이크로컸트롤러에 연결되지 않았습니다. 마이크로컸트롤러가 활성 상태이고 같은 네트워크에 연결되어 있는지 확인하세요.</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coba_lagi">다시 시도</string>
     <string name="tanggal">2월 5일</string>
     <string name="tittle">백내장</string>
     <string name="time">10:10:12</string>
@@ -140,5 +147,30 @@
     <string name="classification_failed_title">분류 실패</string>
     <string name="classification_failed_text">이미지 처리 중 오류가 발생했습니다</string>
     <string name="classification_failed_big_text">이미지 분류에 실패했습니다: %1$s. 다시 시도하거나 인터넷 연결을 확인해 주세요.</string>
+    
+    <!-- ESP32 Connection Strings -->
+    <string name="esp32_ip">http://192.168.1.100:81/stream</string>
+    <string name="esp32_capture_url">http://192.168.1.100/capture</string>
+    <string name="esp32_control_url">http://192.168.1.100/control</string>
+    <string name="led_intensity">LED 강도: %d</string>
+    <string name="kontrol_led">LED 제어</string>
+    <string name="esp32_stream_connecting">ESP32에 연결 중...</string>
+    <string name="esp32_stream_connected">ESP32 연결됨</string>
+    <string name="esp32_stream_failed">ESP32 연결 실패</string>
+    <string name="esp32_capture_success">ESP32에서 이미지를 성공적으로 캡처했습니다</string>
+    <string name="esp32_capture_failed">ESP32에서 이미지 캡처에 실패했습니다</string>
+    
+    <!-- IP Configuration Strings -->
+    <string name="menu_ip_config">ESP32 IP 설정</string>
+    <string name="ip_config_title">ESP32 IP 주소 설정</string>
+    <string name="ip_config_message">ESP32 디바이스의 IP 주소를 입력하세요:</string>
+    <string name="ip_config_hint">192.168.170.20</string>
+    <string name="ip_config_save">저장</string>
+    <string name="ip_config_cancel">취소</string>
+    <string name="ip_config_invalid">IP 주소 형식이 잘못되었습니다</string>
+    <string name="ip_config_saved">IP 주소가 성공적으로 저장되었습니다</string>
+    <string name="ip_config_reset">재설정</string>
+    <string name="ip_config_error">IP 주소 저장 중 오류가 발생했습니다</string>
+    <string name="ip_config_reset_success">IP가 기본값으로 재설정되었습니다: %s</string>
 
 </resources>

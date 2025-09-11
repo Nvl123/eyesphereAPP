@@ -23,10 +23,14 @@ import com.dicoding.eyesphere_nav.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.dicoding.eyesphere_nav.utils.ESP32ConnectionManager
+import androidx.appcompat.app.AlertDialog
+import android.util.Log
 
 class DashboardFragment : BaseFragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+    private lateinit var esp32ConnectionManager: ESP32ConnectionManager
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -53,12 +57,19 @@ class DashboardFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize ESP32 connection manager
+        esp32ConnectionManager = ESP32ConnectionManager.getInstance()
+        Log.d("DashboardFragment", "ESP32ConnectionManager initialized")
+        
         // Check if dark mode is enabled and hide the background ImageView accordingly
         checkDarkModeAndUpdateUI()
+        
+        // Setup ESP32 connection monitoring
+        setupESP32ConnectionMonitoring()
+        Log.d("DashboardFragment", "ESP32 connection monitoring setup completed")
 
         binding.btnCamera.setOnClickListener {
-            val intent = Intent(requireContext(), CameraActivity::class.java)
-            startActivityForResult(intent, MainActivity.CAMERA_ACTIVITY_REQUEST_CODE)
+            checkConnectionAndOpenCamera()
         }
 
         binding.btnSetting.setOnClickListener {
@@ -70,11 +81,30 @@ class DashboardFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("DashboardFragment", "onResume() called - Dashboard fragment resumed")
+        
         // Check dark mode again when fragment resumes to handle theme changes
         checkDarkModeAndUpdateUI()
         
         // Update UI language if needed
         updateUILanguage()
+        
+        Log.d("DashboardFragment", "Starting ESP32 connection check from onResume()")
+        
+        // Start ESP32 connection checking
+        esp32ConnectionManager.startConnectionCheck(requireContext())
+        
+        Log.d("DashboardFragment", "ESP32 connection check started successfully")
+    }
+    
+    override fun onPause() {
+        super.onPause()
+        Log.d("DashboardFragment", "onPause() called - Stopping ESP32 connection check")
+        
+        // Stop ESP32 connection checking when fragment is not visible
+        esp32ConnectionManager.stopConnectionCheck()
+        
+        Log.d("DashboardFragment", "ESP32 connection check stopped in onPause()")
     }
 
     private fun checkDarkModeAndUpdateUI() {
@@ -236,6 +266,95 @@ class DashboardFragment : BaseFragment() {
             
         } catch (e: Exception) {
             android.util.Log.e("DashboardFragment", "Error storing processed response", e)
+        }
+    }
+    
+    /**
+     * Setup ESP32 connection monitoring
+     */
+    private fun setupESP32ConnectionMonitoring() {
+        esp32ConnectionManager.connectionStatus.observe(viewLifecycleOwner) { status ->
+            updateConnectionUI(status)
+        }
+    }
+    
+    /**
+     * Update connection UI based on ESP32 status
+     */
+    private fun updateConnectionUI(status: ESP32ConnectionManager.ConnectionStatus) {
+        try {
+            val statusText = esp32ConnectionManager.getConnectionStatusString(requireContext())
+            val statusColor = esp32ConnectionManager.getConnectionStatusColor(requireContext())
+            
+            binding.tvConnection.text = statusText
+            binding.tvConnection.setTextColor(statusColor)
+            
+            Log.d("DashboardFragment", "============ ESP32 CONNECTION STATUS ============")
+            Log.d("DashboardFragment", "Status: $status")
+            Log.d("DashboardFragment", "Status Text: $statusText")
+            Log.d("DashboardFragment", "Is Connected: ${esp32ConnectionManager.isConnected()}")
+            
+            // Get current IP address for debugging
+            val esp32IpManager = com.dicoding.eyesphere_nav.utils.ESP32IpManager.getInstance()
+            val currentIP = esp32IpManager.getIpAddress(requireContext())
+            Log.d("DashboardFragment", "Current ESP32 IP: $currentIP")
+            Log.d("DashboardFragment", "Status URL: ${esp32IpManager.getStatusUrl(requireContext())}")
+            Log.d("DashboardFragment", "Stream URL: ${esp32IpManager.getStreamUrl(requireContext())}")
+            Log.d("DashboardFragment", "================================================")
+            
+        } catch (e: Exception) {
+            Log.e("DashboardFragment", "Error updating connection UI", e)
+            Log.e("DashboardFragment", "Exception details: ${e.message}")
+            Log.e("DashboardFragment", "Stack trace: ${e.stackTrace.contentToString()}")
+        }
+    }
+    
+    /**
+     * Check connection before opening camera
+     */
+    private fun checkConnectionAndOpenCamera() {
+        Log.d("DashboardFragment", "========== CHECKING CONNECTION FOR CAMERA ==========")
+        
+        val isConnected = esp32ConnectionManager.isConnected()
+        val currentStatus = esp32ConnectionManager.connectionStatus.value
+        
+        Log.d("DashboardFragment", "ESP32 Connection Status: $currentStatus")
+        Log.d("DashboardFragment", "Is Connected: $isConnected")
+        
+        if (isConnected) {
+            Log.d("DashboardFragment", "Connection available - Opening camera activity")
+            val intent = Intent(requireContext(), CameraActivity::class.java)
+            startActivityForResult(intent, MainActivity.CAMERA_ACTIVITY_REQUEST_CODE)
+        } else {
+            Log.w("DashboardFragment", "Connection not available - Showing connection dialog")
+            Log.w("DashboardFragment", "Reason: ESP32 connection failed or not established")
+            showConnectionDialog()
+        }
+        
+        Log.d("DashboardFragment", "================================================")
+    }
+    
+    /**
+     * Show dialog when connection is not available
+     */
+    private fun showConnectionDialog() {
+        try {
+            AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.dialog_tidak_terkoneksi_title))
+                .setMessage(getString(R.string.dialog_tidak_terkoneksi_message))
+                .setPositiveButton(getString(R.string.dialog_coba_lagi)) { dialog, _ ->
+                    dialog.dismiss()
+                    // Try to check connection again
+                    CoroutineScope(Dispatchers.IO).launch {
+                        esp32ConnectionManager.checkESP32Connection(requireContext())
+                    }
+                }
+                .setNegativeButton(getString(R.string.dialog_ok)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        } catch (e: Exception) {
+            Log.e("DashboardFragment", "Error showing connection dialog", e)
         }
     }
 

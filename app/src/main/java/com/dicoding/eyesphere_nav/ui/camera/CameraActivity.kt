@@ -35,13 +35,32 @@ import com.dicoding.eyesphere_nav.utils.LanguageHelper
 import com.dicoding.eyesphere_nav.utils.TranslationHelper
 import com.dicoding.eyesphere_nav.utils.ServerResponseProcessor
 import com.dicoding.eyesphere_nav.ui.dialog.ProcessingAnimationDialog
+import com.dicoding.eyesphere_nav.utils.ESP32ConnectionManager
+import com.google.android.material.slider.Slider
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import java.io.BufferedInputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import com.dicoding.eyesphere_nav.utils.ESP32IpManager
+import com.dicoding.eyesphere_nav.ui.dialog.ESP32IpConfigDialog
 
 
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
     private lateinit var viewModel: CameraViewModel
+    private lateinit var esp32ConnectionManager: ESP32ConnectionManager
+    private lateinit var esp32IpManager: ESP32IpManager
     private var displayId: Int = -1
+    
+    // ESP32 stream variables
+    private var streamJob: Job? = null
+    private var isStreaming = false
+    private var currentStreamBitmap: Bitmap? = null
+    private var frameCount = 0
 
     // Orientation handling
     private var orientationEventListener: OrientationEventListener? = null
@@ -58,16 +77,8 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        if (permissions[Manifest.permission.CAMERA] == true) {
-            initializeCameraWithSurfaceProvider()
-        } else {
-            showToast(getString(R.string.permission_kamera_diperlukan))
-            finish()
-        }
-    }
+    // ESP32 camera doesn't require device camera permissions
+    // Only internet permission is needed (already declared in manifest)
 
     private val galleryLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -77,19 +88,16 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
+    // ESP32 camera doesn't need surface provider initialization
     private fun initializeCameraWithSurfaceProvider() {
-        Log.d(TAG, "Initializing camera with surface provider")
-        try {
-            viewModel.initializeCamera(this, this, binding.previewView.surfaceProvider)
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to initialize camera", e)
-            showToast(getString(R.string.gagal_menginisialisasi_kamera))
-        }
+        Log.d(TAG, "ESP32 camera mode - no surface provider needed")
+        // This method is kept for compatibility but does nothing for ESP32
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Hide ActionBar - using buttons instead
         supportActionBar?.hide()
 
         binding = ActivityCameraBinding.inflate(layoutInflater)
@@ -97,13 +105,13 @@ class CameraActivity : AppCompatActivity() {
 
         // Initialize ViewModel
         viewModel = ViewModelProvider(this)[CameraViewModel::class.java]
-
-        // Initialize display ID
-        displayId = binding.previewView.display?.displayId ?: -1
         
-        // Configure PreviewView
-        binding.previewView.scaleType = PreviewView.ScaleType.FILL_CENTER
-        Log.d(TAG, "PreviewView configured with FILL_CENTER scale type")
+        // Initialize ESP32 managers
+        esp32ConnectionManager = ESP32ConnectionManager.getInstance()
+        esp32IpManager = ESP32IpManager.getInstance()
+
+        // Initialize display ID for orientation handling
+        displayId = -1
 
         // Setup orientation listener
         setupOrientationListener()
@@ -111,15 +119,17 @@ class CameraActivity : AppCompatActivity() {
         // Setup observers
         setupObservers()
 
-        // Check permissions
-        if (allPermissionsGranted()) {
-            initializeCameraWithSurfaceProvider()
-        } else {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
-        }
+        // Start ESP32 camera stream
+        startESP32Stream()
 
         // Setup click listeners
         setupClickListeners()
+        
+        // Setup LED control
+        setupLEDControl()
+        
+        // Setup touch listener for ESP32 stream view
+        setupTouchFocus()
     }
 
     private fun setupOrientationListener() {
@@ -141,67 +151,9 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        // Observe brightness status
-        viewModel.brightnessStatus.observe(this) { status ->
-            binding.tvBrightnessStatus.text = status
-            val colorRes = CameraUtils.getBrightnessStatusColor(status)
-            binding.tvBrightnessStatus.setTextColor(ContextCompat.getColor(this, colorRes))
-        }
-
-        // Observe focus status
-        viewModel.focusStatus.observe(this) { status ->
-            binding.tvFocusStatus.text = status
-            val colorRes = CameraUtils.getFocusStatusColor(status)
-            binding.tvFocusStatus.setTextColor(ContextCompat.getColor(this, colorRes))
-        }
-
-        // Observe camera errors
-        viewModel.cameraError.observe(this) { error ->
-            error?.let {
-                Log.e(TAG, "Camera error observed: $it")
-                showToast(it)
-                // Handle fatal errors
-                if (it.contains("fatal", ignoreCase = true)) {
-                    Log.w(TAG, "Fatal camera error detected, recreating activity")
-                    recreate()
-                }
-                viewModel.clearError()
-            }
-        }
-
-        // Observe photo results
-        viewModel.photoResult.observe(this) { result ->
-            result?.let {
-                when (it) {
-                    is CameraViewModel.PhotoResult.Success -> {
-                        showToast(it.message)
-                    }
-                    is CameraViewModel.PhotoResult.Error -> {
-                        showToast(it.message)
-                    }
-                    is CameraViewModel.PhotoResult.Warning -> {
-                        showToast(it.message)
-                    }
-                }
-                viewModel.clearPhotoResult()
-            }
-        }
-
-        // Observe camera ready state
-        viewModel.isCameraReady.observe(this) { isReady ->
-            if (isReady) {
-                setupTouchFocus()
-                Log.d(TAG, "Camera is ready and touch focus is set up")
-            }
-        }
-        
-        // Observe image saved successfully
-        viewModel.imageSavedSuccessfully.observe(this) { success ->
-            if (success) {
-                showProcessingAnimationDialog()
-                viewModel.resetImageSavedSuccessfully() // Reset using public method
-            }
-        }
+        // Note: ESP32 camera handles brightness/focus analysis directly in analyzeFrame()
+        // No need for viewModel observers since we're using ESP32 camera
+        Log.d(TAG, "ESP32 camera mode - observers not needed")
     }
 
     private fun setupClickListeners() {
@@ -209,14 +161,16 @@ class CameraActivity : AppCompatActivity() {
             // Trigger vibration feedback
             VibrationHelper.vibrateShort(this)
             
-            viewModel.takePhoto(this)
+            // Capture from ESP32 instead of device camera
+            captureESP32Image()
         }
 
         binding.btnFlipCamera.setOnClickListener {
             // Trigger vibration feedback
             VibrationHelper.vibrateShort(this)
             
-            viewModel.flipCamera(this, this, binding.previewView.surfaceProvider)
+            // ESP32 camera doesn't support flip - show stream info instead
+            showToast("ESP32 Camera - Frame: $frameCount")
         }
 
         binding.btnGalery.setOnClickListener {
@@ -225,44 +179,26 @@ class CameraActivity : AppCompatActivity() {
             
             openGallery()
         }
+        
+        binding.btnIpConfig.setOnClickListener {
+            // Trigger vibration feedback
+            VibrationHelper.vibrateShort(this)
+            
+            showIpConfigDialog()
+        }
     }
 
 
 
     private fun setupTouchFocus() {
+        // ESP32 camera doesn't support touch focus, but we can setup touch to show stream info
         try {
-            binding.previewView.setOnTouchListener { view, event ->
-                try {
-                    if (event.action == MotionEvent.ACTION_DOWN && !isDestroyed && !isFinishing) {
-                        val isProcessing = viewModel.isProcessingTouch.value ?: false
-                        if (!isProcessing) {
-                            return@setOnTouchListener performFocusAction(event)
-                        }
-                    }
-                } catch (e: Exception) {
-                    Log.e(TAG, "Error in touch listener", e)
-                }
-                false
+            binding.esp32StreamView.setOnClickListener {
+                // Show stream info or adjust settings
+                showToast("Frame: $frameCount - Tap LED slider to adjust brightness")
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Error setting up touch focus", e)
-        }
-    }
-
-    private fun performFocusAction(event: MotionEvent): Boolean {
-        return try {
-            if (isDestroyed || isFinishing) {
-                Log.w(TAG, "Activity is destroyed/finishing, skipping focus action")
-                return false
-            }
-            
-            val meteringPointFactory = binding.previewView.meteringPointFactory
-            val meteringPoint = meteringPointFactory.createPoint(event.x, event.y)
-            viewModel.performFocus(meteringPoint, this)
-            true
-        } catch (e: Exception) {
-            Log.e(TAG, "Error during touch focus", e)
-            false
+            Log.e(TAG, "Error setting up touch listener", e)
         }
     }
 
@@ -595,9 +531,8 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
+    // ESP32 camera doesn't require runtime permissions
+    private fun allPermissionsGranted() = true
     
     /**
      * Show processing GIF dialog and return to dashboard after completion
@@ -633,12 +568,26 @@ class CameraActivity : AppCompatActivity() {
         super.onResume()
         orientationEventListener?.enable()
         displayManager.registerDisplayListener(displayListener, null)
+        
+        // Start ESP32 connection checking
+        esp32ConnectionManager.startConnectionCheck(this)
+        
+        // Resume ESP32 stream if not already streaming
+        if (!isStreaming) {
+            startESP32Stream()
+        }
     }
 
     override fun onPause() {
         super.onPause()
         orientationEventListener?.disable()
         displayManager.unregisterDisplayListener(displayListener)
+        
+        // Stop ESP32 connection checking
+        esp32ConnectionManager.stopConnectionCheck()
+        
+        // Pause ESP32 stream
+        stopESP32Stream()
     }
 
     override fun onDestroy() {
@@ -646,8 +595,12 @@ class CameraActivity : AppCompatActivity() {
         try {
             Log.d(TAG, "CameraActivity is being destroyed")
             
-            // Clear the surface provider to avoid memory leaks
-            binding.previewView.setOnTouchListener(null)
+            // Stop ESP32 stream
+            stopESP32Stream()
+            
+            // Clear current bitmap
+            currentStreamBitmap?.recycle()
+            currentStreamBitmap = null
             
             // Remove orientation listener
             orientationEventListener?.disable()
@@ -658,9 +611,434 @@ class CameraActivity : AppCompatActivity() {
             Log.e(TAG, "Error during activity cleanup", e)
         }
     }
+    
+    // Menu removed - using button instead
+    
+    /**
+     * Show IP configuration dialog
+     */
+    private fun showIpConfigDialog() {
+        val dialog = ESP32IpConfigDialog.newInstance()
+        dialog.setOnIpConfiguredListener(object : ESP32IpConfigDialog.OnIpConfiguredListener {
+            override fun onIpConfigured(newIp: String) {
+                // Restart stream with new IP
+                restartStreamWithNewIp()
+            }
+        })
+        dialog.show(supportFragmentManager, "ESP32IpConfigDialog")
+    }
+    
+    /**
+     * Restart ESP32 stream with new IP configuration
+     */
+    private fun restartStreamWithNewIp() {
+        try {
+            // Stop current stream
+            stopESP32Stream()
+            
+            // Reset frame count and show connecting status
+            frameCount = 0
+            binding.tvStreamStatus.visibility = android.view.View.VISIBLE
+            binding.tvStreamStatus.text = getString(R.string.esp32_stream_connecting)
+            
+            // Wait a moment then restart
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1000) // Wait 1 second
+                startESP32Stream()
+                showToast("Reconnecting with new IP configuration...")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error restarting stream with new IP", e)
+            showToast("Error restarting connection")
+        }
+    }
+    
+    /**
+     * Setup LED control slider
+     */
+    private fun setupLEDControl() {
+        try {
+            // Initialize LED intensity text
+            updateLEDIntensityText(0)
+            
+            // Setup slider listener
+            binding.sliderLed.addOnChangeListener { slider, value, fromUser ->
+                if (fromUser) {
+                    val intensity = value.toInt()
+                    updateLEDIntensityText(intensity)
+                    
+                    // Control LED intensity on ESP32
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val success = esp32ConnectionManager.controlLedIntensity(this@CameraActivity, intensity)
+                            if (success) {
+                                Log.d(TAG, "LED intensity set to: $intensity")
+                            } else {
+                                Log.w(TAG, "Failed to set LED intensity: $intensity")
+                                withContext(Dispatchers.Main) {
+                                    showToast("Failed to control LED")
+                                }
+                            }
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Error controlling LED", e)
+                            withContext(Dispatchers.Main) {
+                                showToast("Error controlling LED: ${e.message}")
+                            }
+                        }
+                    }
+                }
+            }
+            
+            Log.d(TAG, "LED control setup completed")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error setting up LED control", e)
+        }
+    }
+    
+    /**
+     * Update LED intensity text
+     */
+    private fun updateLEDIntensityText(intensity: Int) {
+        try {
+            binding.tvLedIntensity.text = getString(R.string.led_intensity, intensity)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error updating LED intensity text", e)
+        }
+    }
+    
+    /**
+     * Start ESP32 camera stream
+     */
+    private fun startESP32Stream() {
+        if (isStreaming) return
+        
+        // Show connecting status
+        binding.tvStreamStatus.visibility = android.view.View.VISIBLE
+        binding.tvStreamStatus.text = getString(R.string.esp32_stream_connecting)
+        
+        isStreaming = true
+        frameCount = 0
+        
+        streamJob = CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val streamUrl = esp32IpManager.getStreamUrl(this@CameraActivity)
+                Log.d(TAG, "Starting ESP32 stream from: $streamUrl")
+                
+                val url = URL(streamUrl)
+                val connection = url.openConnection() as HttpURLConnection
+                connection.connectTimeout = 10000
+                connection.readTimeout = 0 // No timeout for streaming
+                connection.doInput = true
+                connection.connect()
+
+                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val inputStream = BufferedInputStream(connection.inputStream)
+                    parseESP32MjpegStream(inputStream)
+                } else {
+                    withContext(Dispatchers.Main) {
+                        showStreamError("Failed to connect: ${connection.responseCode}")
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error starting ESP32 stream: ${e.message}", e)
+                withContext(Dispatchers.Main) {
+                    showStreamError("Connection failed")
+                }
+            } finally {
+                isStreaming = false
+            }
+        }
+    }
+    
+    /**
+     * Parse MJPEG stream from ESP32
+     */
+    private suspend fun parseESP32MjpegStream(input: InputStream) {
+        val reader = input.bufferedReader()
+        
+        while (isStreaming && !Thread.currentThread().isInterrupted) {
+            try {
+                var line: String?
+                var contentLength = -1
+
+                // Read header until we find Content-Length
+                while (isStreaming) {
+                    line = reader.readLine() ?: break
+                    if (line.startsWith("Content-Length", ignoreCase = true)) {
+                        contentLength = line.split(":")[1].trim().toInt()
+                        break
+                    }
+                }
+
+                if (contentLength <= 0) continue
+
+                // Skip empty line after header
+                reader.readLine()
+
+                // Read image data according to content-length
+                val imageBytes = ByteArray(contentLength)
+                var totalRead = 0
+                while (totalRead < contentLength && isStreaming) {
+                    val read = input.read(imageBytes, totalRead, contentLength - totalRead)
+                    if (read == -1) break
+                    totalRead += read
+                }
+
+                if (totalRead == contentLength) {
+                    // Decode and display bitmap
+                    val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, totalRead)
+                    if (bitmap != null) {
+                        withContext(Dispatchers.Main) {
+                            displayStreamFrame(bitmap)
+                        }
+                    } else {
+                        Log.e(TAG, "Failed to decode frame")
+                    }
+                }
+
+                // Skip boundary line
+                reader.readLine()
+                
+            } catch (e: Exception) {
+                if (isStreaming) {
+                    Log.e(TAG, "Error parsing ESP32 stream: ${e.message}")
+                }
+                break
+            }
+        }
+    }
+    
+    /**
+     * Display stream frame and analyze brightness/focus
+     */
+    private fun displayStreamFrame(bitmap: Bitmap) {
+        try {
+            // Store current frame for capture
+            currentStreamBitmap = bitmap
+            
+            // Display frame
+            binding.esp32StreamView.setImageBitmap(bitmap)
+            
+            // Hide stream status overlay when first frame is received
+            if (frameCount == 0) {
+                binding.tvStreamStatus.visibility = android.view.View.GONE
+                Log.d(TAG, "Stream connected - hiding status overlay")
+            }
+            
+            // Update frame count
+            frameCount++
+            
+            // Analyze frame for brightness and focus (every 10th frame to avoid performance issues)
+            if (frameCount % 10 == 0) {
+                analyzeFrame(bitmap)
+            }
+            
+        } catch (e: Exception) {
+            Log.e(TAG, "Error displaying stream frame", e)
+        }
+    }
+    
+    /**
+     * Analyze frame for brightness and focus
+     */
+    private fun analyzeFrame(bitmap: Bitmap) {
+        try {
+            // Analyze brightness
+            val brightness = calculateBrightness(bitmap)
+            val brightnessStatus = when {
+                brightness < 50 -> getString(R.string.s_gelap)
+                brightness < 100 -> getString(R.string.gelap)
+                brightness < 150 -> getString(R.string.bagus)
+                brightness < 200 -> getString(R.string.terang)
+                else -> getString(R.string.s_terang)
+            }
+            
+            // Analyze focus (simplified)
+            val focusStatus = getString(R.string.bagus) // For now, always show "Good"
+            
+            // Update UI
+            binding.tvBrightnessStatus.text = brightnessStatus
+            binding.tvFocusStatus.text = focusStatus
+            
+            // Set text colors based on status
+            val brightnessColor = when (brightnessStatus) {
+                getString(R.string.bagus) -> ContextCompat.getColor(this, android.R.color.holo_green_dark)
+                else -> ContextCompat.getColor(this, android.R.color.holo_orange_dark)
+            }
+            binding.tvBrightnessStatus.setTextColor(brightnessColor)
+            binding.tvFocusStatus.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+            
+        } catch (e: Exception) {
+            Log.e(TAG, "Error analyzing frame", e)
+        }
+    }
+    
+    /**
+     * Calculate brightness of bitmap
+     */
+    private fun calculateBrightness(bitmap: Bitmap): Int {
+        try {
+            val width = bitmap.width.coerceAtMost(100) // Sample smaller area for performance
+            val height = bitmap.height.coerceAtMost(100)
+            
+            var totalBrightness = 0
+            var pixelCount = 0
+            
+            for (x in 0 until width step 5) {
+                for (y in 0 until height step 5) {
+                    val pixel = bitmap.getPixel(x, y)
+                    val red = (pixel shr 16) and 0xFF
+                    val green = (pixel shr 8) and 0xFF
+                    val blue = pixel and 0xFF
+                    
+                    // Calculate luminance
+                    val luminance = (0.299 * red + 0.587 * green + 0.114 * blue).toInt()
+                    totalBrightness += luminance
+                    pixelCount++
+                }
+            }
+            
+            return if (pixelCount > 0) totalBrightness / pixelCount else 0
+        } catch (e: Exception) {
+            Log.e(TAG, "Error calculating brightness", e)
+            return 128 // Default middle brightness
+        }
+    }
+    
+    /**
+     * Show stream error message and keep overlay visible
+     */
+    private fun showStreamError(message: String) {
+        try {
+            binding.tvStreamStatus.visibility = android.view.View.VISIBLE
+            binding.tvStreamStatus.text = message
+            showToast(message)
+            Log.e(TAG, "ESP32 stream error: $message")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error showing stream error", e)
+        }
+    }
+    
+    /**
+     * Stop ESP32 stream
+     */
+    private fun stopESP32Stream() {
+        isStreaming = false
+        streamJob?.cancel()
+        streamJob = null
+        currentStreamBitmap = null
+        Log.d(TAG, "ESP32 stream stopped")
+    }
+    
+    /**
+     * Capture image from ESP32 stream
+     */
+    private fun captureESP32Image() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // First try to get image from current stream
+                var bitmap = currentStreamBitmap
+                
+                // If no current frame, try to capture directly from ESP32
+                if (bitmap == null) {
+                    bitmap = captureDirectFromESP32()
+                }
+                
+                if (bitmap != null) {
+                    // Save bitmap to file
+                    val imageFile = saveBitmapToFile(bitmap)
+                    if (imageFile != null) {
+                        // Save to database and start processing
+                        val insertedId = saveImageToDatabase(imageFile.absolutePath)
+                        if (insertedId > 0) {
+                            withContext(Dispatchers.Main) {
+                                // Show processing dialog
+                                showProcessingAnimationDialog()
+                            }
+                            // Start classification process
+                            startClassificationProcess(imageFile.absolutePath, insertedId)
+                        } else {
+                            withContext(Dispatchers.Main) {
+                                showToast(getString(R.string.gagal_menyimpan_database))
+                            }
+                        }
+                    } else {
+                        withContext(Dispatchers.Main) {
+                            showToast(getString(R.string.error_penyimpanan_file))
+                        }
+                    }
+                } else {
+                    withContext(Dispatchers.Main) {
+                        showToast("Failed to capture image from ESP32")
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error capturing ESP32 image", e)
+                withContext(Dispatchers.Main) {
+                    showToast("Error capturing image: ${e.message}")
+                }
+            }
+        }
+    }
+    
+    /**
+     * Capture image directly from ESP32 capture endpoint
+     */
+    private suspend fun captureDirectFromESP32(): Bitmap? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val captureUrl = esp32IpManager.getCaptureUrl(this@CameraActivity)
+                val url = URL(captureUrl)
+                val connection = url.openConnection() as HttpURLConnection
+                connection.connectTimeout = 10000
+                connection.readTimeout = 10000
+                connection.doInput = true
+                connection.connect()
+
+                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val inputStream = connection.inputStream
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+                    inputStream.close()
+                    connection.disconnect()
+                    bitmap
+                } else {
+                    Log.e(TAG, "Failed to capture from ESP32, response code: ${connection.responseCode}")
+                    null
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error capturing directly from ESP32", e)
+                null
+            }
+        }
+    }
+    
+    /**
+     * Save bitmap to file
+     */
+    private suspend fun saveBitmapToFile(bitmap: Bitmap): File? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val timestamp = System.currentTimeMillis()
+                val filename = "esp32_capture_$timestamp.jpg"
+                val file = File(filesDir, filename)
+                
+                FileOutputStream(file).use { outputStream ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream)
+                    outputStream.flush()
+                }
+                
+                Log.d(TAG, "ESP32 image saved to: ${file.absolutePath}")
+                file
+            } catch (e: Exception) {
+                Log.e(TAG, "Error saving bitmap to file", e)
+                null
+            }
+        }
+    }
 
     companion object {
         private const val TAG = "CameraActivity"
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        // ESP32 camera doesn't require device camera permissions
+        private val REQUIRED_PERMISSIONS = emptyArray<String>()
     }
 }

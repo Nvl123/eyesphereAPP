@@ -11,6 +11,13 @@
     <string name="daya">40%</string>
     <string name="daya_baterai">バッテリー残量</string>
     <string name="status_koneksi">接続済み</string>
+    <string name="status_tidak_terkoneksi">未接続</string>
+    <string name="status_menghubungkan">接続中...</string>
+    <string name="status_koneksi_gagal">接続失敗</string>
+    <string name="dialog_tidak_terkoneksi_title">接続が利用できません</string>
+    <string name="dialog_tidak_terkoneksi_message">デバイスがマイクロコントローラーに接続されていません。マイクロコントローラーがアクティブで同じネットワークに接続されていることを確認してください。</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coba_lagi">再試行</string>
     <string name="tanggal">2月5日</string>
     <string name="tittle">白内障</string>
     <string name="time">10:10:12</string>
@@ -140,5 +147,30 @@
     <string name="classification_failed_title">分類失敗</string>
     <string name="classification_failed_text">画像処理中にエラーが発生しました</string>
     <string name="classification_failed_big_text">画像分類に失敗しました：%1$s。もう一度お試しいただくか、インターネット接続を確認してください。</string>
+    
+    <!-- ESP32 Connection Strings -->
+    <string name="esp32_ip">http://192.168.1.100:81/stream</string>
+    <string name="esp32_capture_url">http://192.168.1.100/capture</string>
+    <string name="esp32_control_url">http://192.168.1.100/control</string>
+    <string name="led_intensity">LED強度: %d</string>
+    <string name="kontrol_led">LEDコントロール</string>
+    <string name="esp32_stream_connecting">ESP32に接続中...</string>
+    <string name="esp32_stream_connected">ESP32が接続されました</string>
+    <string name="esp32_stream_failed">ESP32への接続に失敗しました</string>
+    <string name="esp32_capture_success">ESP32から画像を正常に取得しました</string>
+    <string name="esp32_capture_failed">ESP32からの画像取得に失敗しました</string>
+    
+    <!-- IP Configuration Strings -->
+    <string name="menu_ip_config">ESP32 IP設定</string>
+    <string name="ip_config_title">ESP32 IPアドレス設定</string>
+    <string name="ip_config_message">ESP32デバイスのIPアドレスを入力してください：</string>
+    <string name="ip_config_hint">192.168.170.20</string>
+    <string name="ip_config_save">保存</string>
+    <string name="ip_config_cancel">キャンセル</string>
+    <string name="ip_config_invalid">IPアドレスの形式が無効です</string>
+    <string name="ip_config_saved">IPアドレスが正常に保存されました</string>
+    <string name="ip_config_reset">リセット</string>
+    <string name="ip_config_error">IPアドレスの保存中にエラーが発生しました</string>
+    <string name="ip_config_reset_success">IPをデフォルトにリセットしました: %s</string>
 
 </resources>

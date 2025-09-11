@@ -275,3 +275,6 @@ Sistem translasi otomatis ini memberikan solusi yang komprehensif untuk:
 Dengan implementasi ini, user akan mendapatkan pengalaman yang konsisten dalam bahasa yang mereka pilih, sementara developer mendapatkan sistem yang mudah digunakan dan maintain.
 
 
+
+
+

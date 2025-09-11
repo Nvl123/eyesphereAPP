@@ -142,7 +142,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btn_faq"
+        android:id="@+id/btn_esp32_config"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
@@ -154,6 +154,58 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_modeGL"/>
+
+    <ImageView
+        android:id="@+id/img_esp32_config"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/settings_b_roll_24px"
+        app:layout_constraintBottom_toBottomOf="@id/btn_esp32_config"
+        app:layout_constraintStart_toStartOf="@id/btn_esp32_config"
+        app:layout_constraintTop_toTopOf="@id/btn_esp32_config"
+        app:tint="?attr/colorOnSurface"
+        android:elevation="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_esp32_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_ip_config"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_esp32_config"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@id/btn_esp32_config"
+        android:elevation="10dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/chevron_right_24px"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="@id/btn_esp32_config"
+        app:layout_constraintTop_toTopOf="@id/btn_esp32_config"
+        app:layout_constraintBottom_toBottomOf="@id/btn_esp32_config"
+        android:elevation="10dp"
+        app:tint="?attr/colorOnSurface"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_faq"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="?attr/cardBackgroundColor"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_esp32_config"/>
 
     <ImageView
         android:id="@+id/img_faq"

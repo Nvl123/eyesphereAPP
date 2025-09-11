@@ -173,3 +173,6 @@ Shimmer effect tetap dipertahankan di DetailActivity karena berfungsi dengan bai
 
 **Shimmer effect di DetailActivity TIDAK terpengaruh** dan tetap berfungsi dengan baik. Perubahan ini hanya menghapus shimmer dari PanduanFragment yang bermasalah, bukan menghapus shimmer dari seluruh aplikasi.
 
+
+
+

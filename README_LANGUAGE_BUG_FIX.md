@@ -236,3 +236,6 @@ Bug bahasa button "Ambil Gambar" sudah teratasi dengan:
 Sekarang button akan konsisten dengan bahasa yang seharusnya dan tidak akan berubah secara tiba-tiba! 🎉
 
 
+
+
+

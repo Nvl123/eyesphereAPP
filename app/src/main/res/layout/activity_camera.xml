@@ -4,16 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
 
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+<!--    <androidx.camera.view.PreviewView-->
+<!--        android:id="@+id/previewView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+    <!-- ESP32 Camera Stream ImageView - Circular 240x240 -->
+    <FrameLayout
+        android:layout_width="246dp"
+        android:layout_height="246dp"
+        android:background="@drawable/circular_esp32_stream"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginTop="120dp">
+        
+        <ImageView
+            android:id="@+id/esp32_stream_view"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_shape"
+            android:contentDescription="ESP32 Camera Stream"
+            android:clipToOutline="true" />
+            
+        <!-- Stream status overlay -->
+        <TextView
+            android:id="@+id/tv_stream_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/esp32_stream_connecting"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:gravity="center" />
+            
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/bottom_nav"
@@ -53,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/kecerahan"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="17sp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@id/status_container"
@@ -66,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sedang"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnSurface"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_marginBottom="16dp"
@@ -80,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fokus"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="17sp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/divider"
@@ -94,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sedang"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnSurface"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_marginBottom="16dp"
@@ -147,13 +184,91 @@
         android:layout_height="35dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/add_photo_alternate_24px"
-        app:tint="@color/white"
+        app:tint="?attr/colorOnSurface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="30dp"/>
 
+    <!-- ESP32 IP Configuration Button -->
+    <ImageView
+        android:id="@+id/btn_ip_config"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/settings_b_roll_24px"
+        android:contentDescription="ESP32 IP Configuration"
+        app:tint="?attr/colorOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"/>
 
+    <!-- LED Control Slider -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/led_control_container"
+        android:layout_width="50dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:elevation="4dp"
+        android:padding="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="20dp"
+        app:cardBackgroundColor="#80000000">
 
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider_led"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal|center"
+            android:orientation="vertical"
+            android:rotation="270"
+            android:value="0"
+            android:valueFrom="0"
+            android:valueTo="255"
+            app:haloColor="#6D7C70"
+            app:labelBehavior="gone"
+            app:thumbColor="?attr/colorPrimary"
+            app:trackColorActive="?attr/colorPrimary"
+            app:trackColorInactive="#7E7BA888"/>
+
+        <ImageView
+            android:id="@+id/led_high"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/proicons_brightness"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="8dp"
+            app:tint="?attr/colorOnSurface"/>
+
+        <ImageView
+            android:id="@+id/led_low"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/brignesslow"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"
+            app:tint="?attr/colorOnSurface"/>
+            
+    </androidx.cardview.widget.CardView>
+    
+    <!-- LED Intensity Text -->
+    <TextView
+        android:id="@+id/tv_led_intensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/led_intensity"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="8sp"
+        android:background="#80000000"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/led_control_container"
+        app:layout_constraintEnd_toEndOf="@id/led_control_container"
+        app:layout_constraintTop_toBottomOf="@id/led_control_container"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

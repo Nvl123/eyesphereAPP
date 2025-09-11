@@ -11,6 +11,13 @@
     <string name="daya">40%</string>
     <string name="daya_baterai">พลังงานแบตเตอรี่</string>
     <string name="status_koneksi">เชื่อมต่อแล้ว</string>
+    <string name="status_tidak_terkoneksi">ไม่ได้เชื่อมต่อ</string>
+    <string name="status_menghubungkan">กำลังเชื่อมต่อ...</string>
+    <string name="status_koneksi_gagal">การเชื่อมต่อล้มเหลว</string>
+    <string name="dialog_tidak_terkoneksi_title">ไม่สามารถใช้การเชื่อมต่อได้</string>
+    <string name="dialog_tidak_terkoneksi_message">อุปกรณ์ไม่ได้เชื่อมต่อกับไมโครคอนโทรลเลอร์ ตรวจสอบให้แน่ใจว่าไมโครคอนโทรลเลอร์อยู่ในสถานะที่ใช้งานได้และเชื่อมต่อกับเครือข่ายเดียวกัน</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_coba_lagi">ลองใหม่</string>
     <string name="tanggal">5 ก.พ.</string>
     <string name="tittle">ต้อกระจก</string>
     <string name="time">10:10:12</string>
@@ -140,5 +147,30 @@
     <string name="classification_failed_title">การจำแนกล้มเหลว</string>
     <string name="classification_failed_text">เกิดข้อผิดพลาดขณะประมวลผลภาพ</string>
     <string name="classification_failed_big_text">การจำแนกภาพล้มเหลว: %1$s กรุณาลองใหม่อีกครั้งหรือตรวจสอบการเชื่อมต่ออินเทอร์เน็ต</string>
+    
+    <!-- ESP32 Connection Strings -->
+    <string name="esp32_ip">http://192.168.1.100:81/stream</string>
+    <string name="esp32_capture_url">http://192.168.1.100/capture</string>
+    <string name="esp32_control_url">http://192.168.1.100/control</string>
+    <string name="led_intensity">ความเข้ม LED: %d</string>
+    <string name="kontrol_led">ควบคุม LED</string>
+    <string name="esp32_stream_connecting">กำลังเชื่อมต่อกับ ESP32...</string>
+    <string name="esp32_stream_connected">ESP32 เชื่อมต่อแล้ว</string>
+    <string name="esp32_stream_failed">เชื่อมต่อกับ ESP32 ล้มเหลว</string>
+    <string name="esp32_capture_success">จับภาพจาก ESP32 สำเร็จแล้ว</string>
+    <string name="esp32_capture_failed">จับภาพจาก ESP32 ล้มเหลว</string>
+    
+    <!-- IP Configuration Strings -->
+    <string name="menu_ip_config">การตั้งค่า IP ESP32</string>
+    <string name="ip_config_title">ตั้งค่าที่อยู่ IP ของ ESP32</string>
+    <string name="ip_config_message">กรุณาใส่ที่อยู่ IP ของอุปกรณ์ ESP32 ของคุณ:</string>
+    <string name="ip_config_hint">192.168.170.20</string>
+    <string name="ip_config_save">บันทึก</string>
+    <string name="ip_config_cancel">ยกเลิก</string>
+    <string name="ip_config_invalid">รูปแบบที่อยู่ IP ไม่ถูกต้อง</string>
+    <string name="ip_config_saved">บันทึกที่อยู่ IP สำเร็จแล้ว</string>
+    <string name="ip_config_reset">รีเซ็ต</string>
+    <string name="ip_config_error">เกิดข้อผิดพลาดในการบันทึกที่อยู่ IP</string>
+    <string name="ip_config_reset_success">รีเซ็ต IP เป็นค่าเริ่มต้น: %s</string>
 
 </resources>
